@@ -3,38 +3,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Import Swiper styles */
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/autoplay';
 
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 139 69% 19%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-
     --radius: 0.75rem;
   }
 
@@ -43,7 +40,7 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-sky-50 via-blue-50/30 to-cyan-50/20 text-foreground font-inter;
+    @apply bg-white text-foreground font-inter antialiased;
     scroll-behavior: smooth;
   }
 
@@ -51,95 +48,158 @@
     font-family: 'Inter', sans-serif;
   }
 
-  .font-playfair {
-    font-family: 'Playfair Display', serif;
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-sky-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent;
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent;
   }
   
-  .glass-effect {
-    @apply backdrop-blur-xl bg-white/70 border border-sky-200/30 shadow-2xl;
+  .text-gradient-secondary {
+    @apply bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent;
   }
   
-  .hover-lift {
-    @apply transition-all duration-500 hover:transform hover:-translate-y-3 hover:shadow-2xl hover:shadow-sky-200/50;
+  .glass-morphism {
+    @apply backdrop-blur-lg bg-white/80 border border-gray-200/50 shadow-xl;
   }
   
-  .parallax {
-    @apply transform-gpu;
+  .hero-gradient {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
   }
-
+  
   .card-hover {
-    @apply hover:scale-105 hover:rotate-1 transition-all duration-300 hover:shadow-xl hover:shadow-sky-300/30;
+    @apply hover:scale-105 hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/20;
+  }
+  
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .slide-up {
+    @apply transform translate-y-8 opacity-0 transition-all duration-700 ease-out;
+  }
+  
+  .slide-up.in-view {
+    @apply translate-y-0 opacity-100;
   }
 
-  .button-hover {
-    @apply hover:scale-110 hover:shadow-lg hover:shadow-sky-400/50 transition-all duration-300;
+  .btn-primary {
+    @apply bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105;
   }
 
-  .smooth-bounce {
-    @apply hover:animate-bounce-slow;
+  .btn-secondary {
+    @apply bg-white border-2 border-emerald-600 text-emerald-600 font-semibold px-8 py-4 rounded-xl hover:bg-emerald-50 transition-all duration-300 transform hover:scale-105;
   }
 
-  .glow-effect {
-    @apply shadow-lg shadow-sky-300/50 hover:shadow-xl hover:shadow-sky-400/60 transition-all duration-300;
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
-/* Smooth scrolling for webkit browsers */
-html {
-  scroll-behavior: smooth;
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.animate-fade-scale {
+  animation: fadeInScale 0.8s ease-out;
+}
+
+/* Swiper customization */
+.swiper-pagination-bullet {
+  @apply bg-emerald-600 opacity-50;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-emerald-600 opacity-100;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-emerald-600;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(180deg, #e0f6ff, #b0e0e6);
+  @apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #87ceeb, #4682b4);
-  border-radius: 6px;
+  @apply bg-emerald-500 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #4682b4, #1e3a8a);
-}
-
-/* Carousel animations */
-@keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInFromRight {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.slide-in-left {
-  animation: slideInFromLeft 0.8s ease-out;
-}
-
-.slide-in-right {
-  animation: slideInFromRight 0.8s ease-out;
+  @apply bg-emerald-600;
 }
