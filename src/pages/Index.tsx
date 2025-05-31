@@ -4,8 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ArrowRight, Code, Database, Brain, Zap, Users, Star, Play, CheckCircle, TrendingUp, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -115,23 +113,23 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden hero-gradient">
-        <div className="absolute inset-0 opacity-10">
-          <Swiper
-            modules={[Autoplay]}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            loop={true}
-            className="w-full h-full"
-          >
+        {/* Background decorative images */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-8">
             {heroImages.map((image, index) => (
-              <SwiperSlide key={index}>
+              <div 
+                key={index} 
+                className="aspect-square rounded-lg overflow-hidden animate-fade-in floating-animation"
+                style={{ animationDelay: `${index * 0.5}s` }}
+              >
                 <img
                   src={image}
-                  alt={`Hero ${index + 1}`}
+                  alt={`Background ${index + 1}`}
                   className="w-full h-full object-cover"
                 />
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
 
         {/* Floating elements */}
@@ -140,16 +138,16 @@ const Index = () => {
         <div className="absolute bottom-40 left-20 w-12 h-12 bg-teal-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '4s' }} />
 
         <div className="relative z-10 container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left side - Content */}
             <div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-poppins font-bold mb-8 animate-slide-up">
                 <span className="text-gradient-primary">Transform Your Business</span>
                 <br />
-                <span className="text-gray-800">with Cutting-Edge Software</span>
+                <span className="text-gray-900">with Cutting-Edge Software</span>
               </h1>
               
-              <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <p className="text-xl sm:text-2xl text-gray-700 mb-12 leading-relaxed animate-fade-in font-medium" style={{ animationDelay: '0.3s' }}>
                 We deliver enterprise-grade software solutions, AI integration, and digital transformation 
                 services that drive innovation and accelerate business growth.
               </p>
@@ -170,30 +168,23 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right side - Image Carousel */}
+            {/* Right side - Hero Images Grid */}
             <div className="relative">
-              <Swiper
-                modules={[Autoplay, Navigation, Pagination]}
-                spaceBetween={20}
-                slidesPerView={1}
-                autoplay={{ delay: 3000, disableOnInteraction: false }}
-                loop={true}
-                pagination={{ clickable: true }}
-                className="w-full h-96 rounded-2xl shadow-2xl animate-slide-left"
-              >
+              <div className="grid grid-cols-2 gap-6 animate-slide-left">
                 {heroImages.map((image, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="relative w-full h-full overflow-hidden rounded-2xl">
-                      <img
-                        src={image}
-                        alt={`Hero showcase ${index + 1}`}
-                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                    </div>
-                  </SwiperSlide>
+                  <div 
+                    key={index}
+                    className="aspect-square rounded-2xl overflow-hidden shadow-2xl card-hover"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    <img
+                      src={image}
+                      alt={`Hero showcase ${index + 1}`}
+                      className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
                 ))}
-              </Swiper>
+              </div>
             </div>
           </div>
         </div>
@@ -206,57 +197,43 @@ const Index = () => {
             <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6 animate-slide-up">
               Our <span className="text-gradient-primary">Core Services</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto animate-fade-in font-medium">
               Comprehensive software solutions tailored to your business needs
             </p>
           </div>
 
-          <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            navigation
-            pagination={{ clickable: true }}
-            className="pb-16"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <SwiperSlide key={index}>
-                <Card className="h-full glass-morphism border-0 card-hover group overflow-hidden animate-scale-in" style={{ animationDelay: `${index * 0.2}s` }}>
-                  <div className="aspect-video overflow-hidden rounded-t-xl">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+              <Card key={index} className="h-full glass-morphism border-0 card-hover group overflow-hidden animate-scale-in" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="aspect-video overflow-hidden rounded-t-xl">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
+                    <service.icon className="h-6 w-6 text-emerald-600" />
                   </div>
-                  <div className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-r from-emerald-100 to-green-100 rounded-xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300">
-                      <service.icon className="h-8 w-8 text-emerald-600" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
-                    <div className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-gray-600">
-                          <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed font-medium">
+                    {service.description}
+                  </p>
+                  <div className="space-y-1">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center text-sm text-gray-700">
+                        <CheckCircle className="h-3 w-3 text-emerald-500 mr-2" />
+                        {feature}
+                      </div>
+                    ))}
                   </div>
-                </Card>
-              </SwiperSlide>
+                </div>
+              </Card>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
 
@@ -270,14 +247,14 @@ const Index = () => {
               { number: '8+', label: 'Years Experience', icon: Star },
               { number: '99%', label: 'Client Satisfaction', icon: Shield }
             ].map((stat, index) => (
-              <Card key={index} className="p-8 glass-morphism border-0 card-hover group slide-up animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className="p-6 glass-morphism border-0 card-hover group slide-up animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="flex justify-center mb-4">
-                  <stat.icon className="h-12 w-12 text-emerald-600 group-hover:scale-110 transition-transform duration-300" />
+                  <stat.icon className="h-10 w-10 text-emerald-600 group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <div className="text-4xl font-bold text-emerald-600 mb-2 font-poppins">
+                <div className="text-3xl font-bold text-emerald-600 mb-2 font-poppins">
                   {stat.number}
                 </div>
-                <div className="text-gray-700 font-medium">{stat.label}</div>
+                <div className="text-gray-800 font-semibold">{stat.label}</div>
               </Card>
             ))}
           </div>
@@ -291,53 +268,39 @@ const Index = () => {
             <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6 animate-slide-up">
               Recent <span className="text-gradient-primary">Success Stories</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto animate-fade-in font-medium">
               Discover how we've helped businesses transform their operations
             </p>
           </div>
 
-          <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            navigation
-            pagination={{ clickable: true }}
-            className="pb-16"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectShowcase.map((project, index) => (
-              <SwiperSlide key={index}>
-                <Card className="overflow-hidden glass-morphism border-0 card-hover group animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
-                  <div className="aspect-video overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+              <Card key={index} className="overflow-hidden glass-morphism border-0 card-hover group animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed font-medium">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-emerald-100 text-emerald-600 text-sm rounded-full font-medium">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </Card>
-              </SwiperSlide>
+                </div>
+              </Card>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
 
@@ -348,50 +311,36 @@ const Index = () => {
             <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6 animate-slide-up">
               What Our <span className="text-gradient-primary">Clients Say</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto animate-fade-in font-medium">
               Real feedback from businesses we've helped transform
             </p>
           </div>
 
-          <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            navigation
-            pagination={{ clickable: true }}
-            className="pb-16"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <SwiperSlide key={index}>
-                <Card className="p-8 glass-morphism border-0 card-hover group text-center h-full animate-scale-in" style={{ animationDelay: `${index * 0.15}s` }}>
-                  <div className="flex justify-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                    ))}
+              <Card key={index} className="p-6 glass-morphism border-0 card-hover group text-center h-full animate-scale-in" style={{ animationDelay: `${index * 0.15}s` }}>
+                <div className="flex justify-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-6 italic leading-relaxed font-medium">
+                  "{testimonial.content}"
+                </p>
+                <div className="flex items-center justify-center">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover mr-4"
+                  />
+                  <div className="text-left">
+                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-600">{testimonial.position}</p>
                   </div>
-                  <p className="text-gray-600 mb-6 italic leading-relaxed">
-                    "{testimonial.content}"
-                  </p>
-                  <div className="flex items-center justify-center">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover mr-4"
-                    />
-                    <div className="text-left">
-                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.position}</p>
-                    </div>
-                  </div>
-                </Card>
-              </SwiperSlide>
+                </div>
+              </Card>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
 
@@ -403,7 +352,7 @@ const Index = () => {
           <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-white mb-8 animate-slide-up">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-white/95 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
+          <p className="text-xl text-white/95 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in font-medium">
             Let's discuss how our innovative solutions can accelerate your digital transformation journey
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-scale-in">

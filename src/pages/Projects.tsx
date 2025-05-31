@@ -125,12 +125,16 @@ const Projects = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50/50 via-blue-50/30 to-green-50/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-playfair font-bold mb-6">
-            Recent <span className="text-gradient">Projects</span>
+      <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
+        {/* Floating elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-emerald-200 rounded-full floating-animation opacity-60" />
+        <div className="absolute top-40 right-20 w-16 h-16 bg-green-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '2s' }} />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-6 animate-slide-up">
+            Recent <span className="text-gradient-primary">Projects</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed animate-fade-in font-medium" style={{ animationDelay: '0.3s' }}>
             Explore our portfolio of successful projects across diverse industries, showcasing innovative solutions 
             that have transformed businesses and delivered measurable results.
           </p>
@@ -142,7 +146,7 @@ const Projects = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden glass-effect border-0 shadow-lg hover-lift group">
+              <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="aspect-video overflow-hidden relative">
                   <img 
                     src={project.image} 
@@ -160,28 +164,28 @@ const Projects = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">{project.title}</h3>
-                      <p className="text-primary font-medium mb-1">{project.client}</p>
-                      <p className="text-sm text-gray-500">{project.category} • {project.year}</p>
+                      <p className="text-emerald-600 font-semibold mb-1">{project.client}</p>
+                      <p className="text-sm text-gray-600 font-medium">{project.category} • {project.year}</p>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed mb-6">{project.description}</p>
+                  <p className="text-gray-700 leading-relaxed mb-6 font-medium">{project.description}</p>
 
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="text-center">
-                      <Calendar className="h-5 w-5 text-primary mx-auto mb-1" />
-                      <p className="text-sm font-medium text-gray-900">{project.duration}</p>
-                      <p className="text-xs text-gray-500">Duration</p>
+                      <Calendar className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
+                      <p className="text-sm font-semibold text-gray-900">{project.duration}</p>
+                      <p className="text-xs text-gray-600">Duration</p>
                     </div>
                     <div className="text-center">
-                      <Users className="h-5 w-5 text-primary mx-auto mb-1" />
-                      <p className="text-sm font-medium text-gray-900">{project.team}</p>
-                      <p className="text-xs text-gray-500">Team Size</p>
+                      <Users className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
+                      <p className="text-sm font-semibold text-gray-900">{project.team}</p>
+                      <p className="text-xs text-gray-600">Team Size</p>
                     </div>
                     <div className="text-center">
-                      <TrendingUp className="h-5 w-5 text-primary mx-auto mb-1" />
-                      <p className="text-sm font-medium text-gray-900">{project.outcomes.length}</p>
-                      <p className="text-xs text-gray-500">Key Results</p>
+                      <TrendingUp className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
+                      <p className="text-sm font-semibold text-gray-900">{project.outcomes.length}</p>
+                      <p className="text-xs text-gray-600">Key Results</p>
                     </div>
                   </div>
 
@@ -189,7 +193,7 @@ const Projects = () => {
                     <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Outcomes:</h4>
                     <div className="space-y-2">
                       {project.outcomes.map((outcome, idx) => (
-                        <div key={idx} className="flex items-start text-gray-600 text-sm">
+                        <div key={idx} className="flex items-start text-gray-700 text-sm font-medium">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                           {outcome}
                         </div>
@@ -201,14 +205,14 @@ const Projects = () => {
                     <h4 className="text-lg font-semibold text-gray-900 mb-3">Technology Stack:</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                        <span key={idx} className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
                           {tech}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white">
+                  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white">
                     View Case Study
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </Button>
@@ -220,13 +224,13 @@ const Projects = () => {
       </section>
 
       {/* Project Statistics */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
+      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Project <span className="text-gradient">Impact</span>
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Project <span className="text-gradient-primary">Impact</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto font-medium">
               Our projects have delivered substantial value across various metrics
             </p>
           </div>
@@ -238,10 +242,10 @@ const Projects = () => {
               { number: '40%', label: 'Average Cost Savings', description: 'Operational cost reduction achieved' },
               { number: '99.5%', label: 'Uptime Delivered', description: 'System reliability maintained' }
             ].map((stat, index) => (
-              <Card key={index} className="p-6 text-center glass-effect border-0 shadow-lg hover-lift">
-                <div className="text-4xl font-bold text-primary mb-2 font-playfair">{stat.number}</div>
+              <Card key={index} className="p-6 text-center glass-morphism border-0 shadow-lg card-hover animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="text-4xl font-bold text-emerald-600 mb-2 font-poppins">{stat.number}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{stat.label}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{stat.description}</p>
+                <p className="text-gray-700 text-sm leading-relaxed font-medium">{stat.description}</p>
               </Card>
             ))}
           </div>
@@ -251,11 +255,11 @@ const Projects = () => {
       {/* Industries Served */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Industries <span className="text-gradient">We Serve</span>
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Industries <span className="text-gradient-primary">We Serve</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto font-medium">
               Our expertise spans across multiple industries, delivering tailored solutions for diverse business needs
             </p>
           </div>
@@ -275,8 +279,8 @@ const Projects = () => {
               'Real Estate',
               'Telecommunications'
             ].map((industry, index) => (
-              <Card key={index} className="p-4 text-center glass-effect border-0 shadow-lg hover-lift group cursor-pointer">
-                <p className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors">
+              <Card key={index} className="p-4 text-center glass-morphism border-0 shadow-lg card-hover group cursor-pointer animate-scale-in" style={{ animationDelay: `${index * 0.05}s` }}>
+                <p className="text-sm font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors">
                   {industry}
                 </p>
               </Card>

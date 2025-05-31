@@ -129,12 +129,16 @@ const Products = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50/50 via-blue-50/30 to-green-50/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-playfair font-bold mb-6">
-            Our <span className="text-gradient">Products</span>
+      <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
+        {/* Floating elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-emerald-200 rounded-full floating-animation opacity-60" />
+        <div className="absolute top-40 right-20 w-16 h-16 bg-green-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '2s' }} />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-6 animate-slide-up">
+            Our <span className="text-gradient-primary">Products</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed animate-fade-in font-medium" style={{ animationDelay: '0.3s' }}>
             Flagship software products and customizable solutions designed to streamline operations, 
             enhance productivity, and drive digital transformation across industries.
           </p>
@@ -146,7 +150,7 @@ const Products = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {products.map((product, index) => (
-              <Card key={index} className="overflow-hidden glass-effect border-0 shadow-lg hover-lift group">
+              <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="aspect-video overflow-hidden">
                   <img 
                     src={product.image} 
@@ -158,12 +162,12 @@ const Products = () => {
                 <div className="p-8">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-                        <product.icon className="h-6 w-6 text-primary" />
+                      <div className="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center">
+                        <product.icon className="h-6 w-6 text-emerald-600" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-gray-900">{product.title}</h3>
-                        <p className="text-primary font-medium">{product.subtitle}</p>
+                        <p className="text-emerald-600 font-semibold">{product.subtitle}</p>
                       </div>
                     </div>
                     <Badge className={`${getStatusColor(product.status)} border`}>
@@ -171,14 +175,14 @@ const Products = () => {
                     </Badge>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed mb-6">{product.description}</p>
+                  <p className="text-gray-700 leading-relaxed mb-6 font-medium">{product.description}</p>
 
                   <div className="mb-6">
                     <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Features:</h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {product.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-gray-600 text-sm">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
+                        <div key={idx} className="flex items-center text-gray-700 text-sm font-medium">
+                          <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full mr-2" />
                           {feature}
                         </div>
                       ))}
@@ -189,7 +193,7 @@ const Products = () => {
                     <h4 className="text-lg font-semibold text-gray-900 mb-3">Use Cases:</h4>
                     <div className="flex flex-wrap gap-2">
                       {product.useCases.map((useCase, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm font-medium">
+                        <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
                           {useCase}
                         </span>
                       ))}
@@ -200,7 +204,7 @@ const Products = () => {
                     <h4 className="text-lg font-semibold text-gray-900 mb-3">Built With:</h4>
                     <div className="flex flex-wrap gap-2">
                       {product.technologies.map((tech, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium">
+                        <span key={idx} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
                           {tech}
                         </span>
                       ))}
@@ -209,12 +213,12 @@ const Products = () => {
 
                   <div className="flex space-x-3">
                     <Link to="/contact" className="flex-1">
-                      <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white">
+                      <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white">
                         Request Demo
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
-                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+                    <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
                       Learn More
                     </Button>
                   </div>
@@ -226,13 +230,13 @@ const Products = () => {
       </section>
 
       {/* Product Categories */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
+      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Product <span className="text-gradient">Categories</span>
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Product <span className="text-gradient-primary">Categories</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto font-medium">
               Our products span across multiple domains to address diverse business needs
             </p>
           </div>
@@ -246,12 +250,12 @@ const Products = () => {
               { name: 'DevOps', count: '1 Product', icon: Cloud, color: 'from-indigo-400 to-blue-400' },
               { name: 'Security', count: '1 Product', icon: Shield, color: 'from-red-400 to-pink-400' }
             ].map((category, index) => (
-              <Card key={index} className="p-6 text-center glass-effect border-0 shadow-lg hover-lift group cursor-pointer">
+              <Card key={index} className="p-6 text-center glass-morphism border-0 shadow-lg card-hover group cursor-pointer animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <category.icon className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-1">{category.name}</h3>
-                <p className="text-sm text-gray-600">{category.count}</p>
+                <p className="text-sm text-gray-600 font-medium">{category.count}</p>
               </Card>
             ))}
           </div>
@@ -261,11 +265,11 @@ const Products = () => {
       {/* Customization Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Custom <span className="text-gradient">Solutions</span>
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Custom <span className="text-gradient-primary">Solutions</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto font-medium">
               Need something unique? We create fully customized solutions tailored to your specific business requirements.
             </p>
           </div>
@@ -275,25 +279,37 @@ const Products = () => {
               {
                 title: 'Industry-Specific Solutions',
                 description: 'Tailored software solutions designed for specific industries and regulatory requirements.',
-                icon: Settings
+                icon: Settings,
+                image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop'
               },
               {
                 title: 'Integration Services',
                 description: 'Seamlessly integrate our products with your existing systems and third-party applications.',
-                icon: Zap
+                icon: Zap,
+                image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop'
               },
               {
                 title: 'White-Label Options',
                 description: 'Rebrand our products with your company identity for resale or internal deployment.',
-                icon: Code
+                icon: Code,
+                image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop'
               }
             ].map((service, index) => (
-              <Card key={index} className="p-8 text-center glass-effect border-0 shadow-lg hover-lift">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <service.icon className="h-8 w-8 text-primary" />
+              <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                <div className="p-8 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="h-8 w-8 text-emerald-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
+                  <p className="text-gray-700 leading-relaxed font-medium">{service.description}</p>
+                </div>
               </Card>
             ))}
           </div>
@@ -301,23 +317,25 @@ const Products = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary via-secondary to-accent">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-white mb-6">
+      <section className="py-20 bg-gradient-to-r from-emerald-600 to-green-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10" />
+        
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl sm:text-4xl font-poppins font-bold text-white mb-6 animate-slide-up">
             Interested in Our Products?
           </h2>
-          <p className="text-xl text-white/90 mb-8 leading-relaxed">
+          <p className="text-xl text-white/95 mb-8 leading-relaxed animate-fade-in font-medium">
             Schedule a demo to see how our products can transform your business operations
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
             <Link to="/contact">
-              <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-full font-semibold shadow-lg hover-lift">
+              <Button size="lg" className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">
                 Schedule Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-full font-semibold">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-3 rounded-full font-semibold">
                 Request Custom Solution
               </Button>
             </Link>
