@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface Message {
@@ -18,7 +18,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m here to help you learn about Flagestrators Global Software Solutions. How can I assist you today?',
+      text: '✨ Hello! I\'m your AI assistant for Flagestrators Global Software Solutions. How can I help you transform your business today?',
       isBot: true,
       timestamp: new Date()
     }
@@ -50,7 +50,6 @@ const ChatBot = () => {
     setIsTyping(true);
 
     try {
-      // Call OpenRouter API
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -62,20 +61,26 @@ const ChatBot = () => {
           messages: [
             {
               role: 'system',
-              content: `You are a helpful assistant for Flagestrators Global Software Solutions. The company specializes in:
+              content: `You are an intelligent AI assistant for Flagestrators Global Software Solutions. The company specializes in:
               
+              🔧 Services:
               - End-to-End Web Application Development
-              - AI Integration & Automation
+              - AI Integration & Automation Solutions
               - Data Migration & ETL Solutions
-              - Microservices Architecture
+              - Microservices Architecture Design
               - Legacy System Modernization
               - CRM & Enterprise Solutions
               
-              Team: P Murali Krishna (Founder & CEO), Hari Krishna (Senior Architect), Ravi Teja (Technical Lead), Rajkumar (AI Integration Engineer), Shiva (Senior Business Analyst)
+              👥 Expert Team:
+              - P Murali Krishna (Founder & CEO) - Visionary leader in enterprise software
+              - Hari Krishna (Senior Architect) - System architecture expert
+              - Ravi Teja (Technical Lead, Full Stack Developer) - Modern web technologies specialist
+              - Rajkumar (AI Integration Engineer) - AI/ML implementation expert
+              - Shiva (Senior Business Analyst) - Business requirements specialist
               
-              Location: Hyderabad, Telangana, India
+              📍 Location: Hyderabad, Telangana, India
               
-              Keep responses concise, professional, and helpful. Focus on how the company can help with their software development needs.`
+              Keep responses engaging, professional, and helpful. Use emojis appropriately. Focus on how the company can transform their business through innovative software solutions. Be enthusiastic about technology and business transformation.`
             },
             {
               role: 'user',
@@ -92,7 +97,7 @@ const ChatBot = () => {
       }
 
       const data = await response.json();
-      const botResponse = data.choices[0]?.message?.content || 'Sorry, I couldn\'t process your request. Please try again.';
+      const botResponse = data.choices[0]?.message?.content || 'I apologize, but I\'m having trouble processing your request right now. Please feel free to contact us directly at contact@flagestrators.com! 🚀';
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -106,7 +111,7 @@ const ChatBot = () => {
       console.error('Error calling OpenRouter API:', error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'I\'m sorry, I\'m having trouble connecting right now. Please feel free to contact us directly at contact@flagestrators.com or visit our contact page.',
+        text: '🔧 I\'m having some technical difficulties right now! Please reach out to us directly at contact@flagestrators.com or visit our contact page for immediate assistance. We\'re here to help! ✨',
         isBot: true,
         timestamp: new Date()
       };
@@ -126,54 +131,67 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* Chat Button */}
+      {/* Chat Button - Enhanced with Sky Blue Theme */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-primary to-secondary shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        className={`fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 shadow-2xl shadow-sky-400/50 transition-all duration-500 hover:scale-110 border-2 border-white group ${
+          isOpen ? 'animate-wiggle' : 'animate-bounce-slow'
+        }`}
         size="sm"
       >
-        {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+        {isOpen ? (
+          <X className="h-7 w-7 text-white group-hover:rotate-90 transition-transform duration-300" />
+        ) : (
+          <div className="relative">
+            <MessageCircle className="h-7 w-7 text-white group-hover:scale-110 transition-transform duration-300" />
+            <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-yellow-300 animate-pulse" />
+          </div>
+        )}
       </Button>
 
-      {/* Chat Window */}
+      {/* Chat Window - Enhanced Design */}
       {isOpen && (
-        <Card className="fixed bottom-24 right-6 z-50 w-96 h-[500px] glass-effect border-0 shadow-2xl animate-scale-in">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-t-lg">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <Bot className="h-5 w-5" />
+        <Card className="fixed bottom-28 right-8 z-50 w-96 h-[600px] glass-effect border-2 border-sky-200 shadow-2xl shadow-sky-300/30 animate-slide-up overflow-hidden">
+          {/* Header - Enhanced */}
+          <div className="bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-600 text-white p-6 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-blue-400/20" />
+            <div className="relative z-10 flex items-center space-x-4">
+              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center animate-float border-2 border-white/30">
+                <Bot className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="font-semibold">Flagestrators Assistant</h3>
-                <p className="text-xs text-white/80">Online • Ready to help</p>
+                <h3 className="font-bold text-lg">Flagestrators AI Assistant</h3>
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                  <p className="text-sm text-white/90">Online • Ready to help ✨</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Messages */}
-          <div className="flex-1 p-4 overflow-y-auto max-h-80 space-y-4">
+          {/* Messages - Enhanced */}
+          <div className="flex-1 p-6 overflow-y-auto max-h-96 space-y-6 bg-gradient-to-b from-sky-50/50 to-white">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
+                className={`flex ${message.isBot ? 'justify-start' : 'justify-end'} animate-fade-in`}
               >
-                <div className={`flex items-end space-x-2 max-w-[80%] ${message.isBot ? '' : 'flex-row-reverse space-x-reverse'}`}>
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                <div className={`flex items-end space-x-3 max-w-[85%] ${message.isBot ? '' : 'flex-row-reverse space-x-reverse'}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shadow-lg ${
                     message.isBot 
-                      ? 'bg-gradient-to-r from-primary to-secondary text-white' 
-                      : 'bg-gray-300 text-gray-600'
+                      ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white animate-float' 
+                      : 'bg-gradient-to-r from-gray-500 to-gray-600 text-white'
                   }`}>
-                    {message.isBot ? <Bot className="h-3 w-3" /> : <User className="h-3 w-3" />}
+                    {message.isBot ? <Bot className="h-4 w-4" /> : <User className="h-4 w-4" />}
                   </div>
-                  <div className={`rounded-lg p-3 ${
+                  <div className={`rounded-2xl p-4 shadow-lg ${
                     message.isBot 
-                      ? 'bg-gray-100 text-gray-800' 
-                      : 'bg-gradient-to-r from-primary to-secondary text-white'
+                      ? 'bg-white border border-sky-200 text-gray-800' 
+                      : 'bg-gradient-to-r from-sky-500 to-blue-600 text-white'
                   }`}>
-                    <p className="text-sm whitespace-pre-wrap">{message.text}</p>
-                    <p className={`text-xs mt-1 ${
-                      message.isBot ? 'text-gray-500' : 'text-white/70'
+                    <p className="text-sm whitespace-pre-wrap leading-relaxed">{message.text}</p>
+                    <p className={`text-xs mt-2 ${
+                      message.isBot ? 'text-gray-500' : 'text-white/80'
                     }`}>
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
@@ -183,16 +201,16 @@ const ChatBot = () => {
             ))}
             
             {isTyping && (
-              <div className="flex justify-start">
-                <div className="flex items-end space-x-2 max-w-[80%]">
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center">
-                    <Bot className="h-3 w-3" />
+              <div className="flex justify-start animate-fade-in">
+                <div className="flex items-end space-x-3 max-w-[85%]">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 text-white flex items-center justify-center animate-pulse">
+                    <Bot className="h-4 w-4" />
                   </div>
-                  <div className="bg-gray-100 rounded-lg p-3">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="bg-white border border-sky-200 rounded-2xl p-4 shadow-lg">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 bg-sky-400 rounded-full animate-bounce"></div>
+                      <div className="w-3 h-3 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-3 h-3 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
                 </div>
@@ -201,26 +219,29 @@ const ChatBot = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
-          <div className="p-4 border-t border-gray-200">
-            <div className="flex space-x-2">
+          {/* Input - Enhanced */}
+          <div className="p-6 border-t border-sky-200 bg-white">
+            <div className="flex space-x-3">
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="flex-1 border-gray-300 focus:border-primary focus:ring-primary"
+                className="flex-1 border-2 border-sky-300 focus:border-sky-500 focus:ring-sky-500 rounded-xl px-4 py-3 text-sm"
                 disabled={isTyping}
               />
               <Button
                 onClick={sendMessage}
                 disabled={!inputValue.trim() || isTyping}
                 size="sm"
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white"
+                className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white rounded-xl px-6 py-3 button-hover disabled:opacity-50"
               >
-                <Send className="h-4 w-4" />
+                <Send className="h-5 w-5" />
               </Button>
             </div>
+            <p className="text-xs text-gray-500 mt-2 text-center">
+              Powered by AI • Ask about our services, team, or schedule a demo! 🚀
+            </p>
           </div>
         </Card>
       )}

@@ -43,7 +43,7 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-white via-purple-50/30 to-blue-50/30 text-foreground font-inter;
+    @apply bg-gradient-to-br from-sky-50 via-blue-50/30 to-cyan-50/20 text-foreground font-inter;
     scroll-behavior: smooth;
   }
 
@@ -58,19 +58,35 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-sky-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent;
   }
   
   .glass-effect {
-    @apply backdrop-blur-sm bg-white/80 border border-white/20;
+    @apply backdrop-blur-xl bg-white/70 border border-sky-200/30 shadow-2xl;
   }
   
   .hover-lift {
-    @apply transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-lg;
+    @apply transition-all duration-500 hover:transform hover:-translate-y-3 hover:shadow-2xl hover:shadow-sky-200/50;
   }
   
   .parallax {
     @apply transform-gpu;
+  }
+
+  .card-hover {
+    @apply hover:scale-105 hover:rotate-1 transition-all duration-300 hover:shadow-xl hover:shadow-sky-300/30;
+  }
+
+  .button-hover {
+    @apply hover:scale-110 hover:shadow-lg hover:shadow-sky-400/50 transition-all duration-300;
+  }
+
+  .smooth-bounce {
+    @apply hover:animate-bounce-slow;
+  }
+
+  .glow-effect {
+    @apply shadow-lg shadow-sky-300/50 hover:shadow-xl hover:shadow-sky-400/60 transition-all duration-300;
   }
 }
 
@@ -81,18 +97,49 @@ html {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: linear-gradient(180deg, #e0f6ff, #b0e0e6);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8B7EC8, #90EE90);
-  border-radius: 4px;
+  background: linear-gradient(180deg, #87ceeb, #4682b4);
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #7B6EAB, #7FDD7F);
+  background: linear-gradient(180deg, #4682b4, #1e3a8a);
+}
+
+/* Carousel animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInFromRight 0.8s ease-out;
 }

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X, Code2, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -28,38 +28,43 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'glass-effect shadow-lg' : 'bg-transparent'
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      scrolled ? 'glass-effect shadow-2xl shadow-sky-200/50 backdrop-blur-xl' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <Code2 className="h-8 w-8 text-primary group-hover:rotate-12 transition-transform duration-300" />
-            <span className="font-playfair text-xl font-bold text-gradient">
+        <div className="flex justify-between items-center h-18">
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="relative">
+              <Code2 className="h-10 w-10 text-sky-600 group-hover:rotate-12 transition-transform duration-500 group-hover:scale-110" />
+              <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-blue-400 animate-pulse" />
+            </div>
+            <span className="font-playfair text-2xl font-bold text-gradient group-hover:scale-105 transition-transform duration-300">
               Flagestrators Global
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-10">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                className={`relative px-4 py-3 text-lg font-semibold transition-all duration-300 ${
                   location.pathname === item.path
-                    ? 'text-primary'
-                    : 'text-gray-700 hover:text-primary'
+                    ? 'text-sky-600'
+                    : 'text-gray-700 hover:text-sky-600'
                 } group`}
               >
                 {item.name}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform origin-left transition-transform duration-300 ${
+                <span className={`absolute bottom-1 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600 transform origin-left transition-transform duration-300 rounded-full ${
                   location.pathname === item.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`} />
+                <span className={`absolute inset-0 bg-sky-100 rounded-lg transform scale-0 group-hover:scale-100 transition-transform duration-300 -z-10`} />
               </Link>
             ))}
-            <Button className="ml-4 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-full px-6">
+            <Button className="ml-6 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white rounded-full px-8 py-3 button-hover glow-effect font-semibold text-lg">
               Get Started
+              <Sparkles className="ml-2 h-5 w-5 animate-pulse" />
             </Button>
           </div>
 
@@ -69,33 +74,34 @@ const Navbar = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700"
+              className="text-gray-700 hover:text-sky-600 hover:bg-sky-100 rounded-xl p-3"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 glass-effect rounded-lg mt-2">
+          <div className="md:hidden animate-slide-down">
+            <div className="px-4 pt-4 pb-6 space-y-2 glass-effect rounded-2xl mt-4 shadow-2xl shadow-sky-200/50">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                  className={`block px-4 py-3 rounded-xl text-lg font-semibold transition-all duration-300 ${
                     location.pathname === item.path
-                      ? 'text-primary bg-primary/10'
-                      : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+                      ? 'text-sky-600 bg-sky-100'
+                      : 'text-gray-700 hover:text-sky-600 hover:bg-sky-50'
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button className="w-full mt-4 bg-gradient-to-r from-primary to-secondary text-white">
+              <Button className="w-full mt-6 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-xl py-3 button-hover glow-effect font-semibold text-lg">
                 Get Started
+                <Sparkles className="ml-2 h-5 w-5 animate-pulse" />
               </Button>
             </div>
           </div>
