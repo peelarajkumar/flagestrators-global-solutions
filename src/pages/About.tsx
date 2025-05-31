@@ -1,6 +1,8 @@
 
 import { Card } from '@/components/ui/card';
 import { Mail, Linkedin, Github } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const About = () => {
   const team = [
@@ -56,15 +58,42 @@ const About = () => {
     }
   ];
 
+  const companyImages = [
+    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop'
+  ];
+
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50/50 via-blue-50/30 to-green-50/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-playfair font-bold mb-6">
-            About <span className="text-gradient">Flagestrators Global</span>
+      <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
+        {/* Background carousel */}
+        <div className="absolute inset-0 opacity-5">
+          <Swiper
+            modules={[Autoplay]}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            loop={true}
+            className="w-full h-full"
+          >
+            {companyImages.map((image, index) => (
+              <SwiperSlide key={index}>
+                <img src={image} alt={`Background ${index + 1}`} className="w-full h-full object-cover" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Floating elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-emerald-200 rounded-full floating-animation opacity-60" />
+        <div className="absolute top-40 right-20 w-16 h-16 bg-green-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '2s' }} />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-6 animate-slide-up">
+            About <span className="text-gradient-primary">Flagestrators Global</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
             We are a dynamic software solutions company dedicated to transforming businesses through 
             innovative technology, AI integration, and world-class development practices.
           </p>
@@ -75,15 +104,15 @@ const About = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <Card className="p-8 glass-effect border-0 shadow-lg hover-lift">
-              <h2 className="text-3xl font-playfair font-bold text-primary mb-4">Our Vision</h2>
+            <Card className="p-8 glass-morphism border-0 shadow-lg card-hover animate-slide-left">
+              <h2 className="text-3xl font-poppins font-bold text-emerald-600 mb-4">Our Vision</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
                 To be the global leader in delivering transformative software solutions that empower 
                 businesses to achieve unprecedented growth through cutting-edge technology and AI innovation.
               </p>
             </Card>
-            <Card className="p-8 glass-effect border-0 shadow-lg hover-lift">
-              <h2 className="text-3xl font-playfair font-bold text-secondary mb-4">Our Mission</h2>
+            <Card className="p-8 glass-morphism border-0 shadow-lg card-hover animate-slide-right" style={{ animationDelay: '0.2s' }}>
+              <h2 className="text-3xl font-poppins font-bold text-emerald-600 mb-4">Our Mission</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
                 To partner with organizations worldwide in their digital transformation journey by 
                 providing innovative, scalable, and intelligent software solutions that drive operational 
@@ -95,11 +124,11 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
+      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Meet Our <span className="text-gradient">Expert Team</span>
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Meet Our <span className="text-gradient-primary">Expert Team</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our diverse team of experts brings together decades of experience in software development, 
@@ -107,41 +136,55 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Swiper
+            modules={[Autoplay, Navigation, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            navigation
+            pagination={{ clickable: true }}
+            className="pb-16"
+          >
             {team.map((member, index) => (
-              <Card key={index} className="overflow-hidden hover-lift glass-effect border-0 shadow-lg group">
-                <div className="aspect-square overflow-hidden">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <p className="text-primary font-medium mb-3">{member.role}</p>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
-                  <div className="flex space-x-3">
-                    <a href={member.social.linkedin} className="text-primary hover:text-primary/80 transition-colors">
-                      <Linkedin className="h-5 w-5" />
-                    </a>
-                    <a href={`mailto:${member.social.email}`} className="text-primary hover:text-primary/80 transition-colors">
-                      <Mail className="h-5 w-5" />
-                    </a>
+              <SwiperSlide key={index}>
+                <Card className="overflow-hidden card-hover glass-morphism border-0 shadow-lg group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="aspect-square overflow-hidden">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
-                </div>
-              </Card>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+                    <p className="text-emerald-600 font-medium mb-3">{member.role}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
+                    <div className="flex space-x-3">
+                      <a href={member.social.linkedin} className="text-emerald-600 hover:text-emerald-700 transition-colors transform hover:scale-110">
+                        <Linkedin className="h-5 w-5" />
+                      </a>
+                      <a href={`mailto:${member.social.email}`} className="text-emerald-600 hover:text-emerald-700 transition-colors transform hover:scale-110">
+                        <Mail className="h-5 w-5" />
+                      </a>
+                    </div>
+                  </div>
+                </Card>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </section>
 
       {/* Company Values */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Our <span className="text-gradient">Values</span>
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Our <span className="text-gradient-primary">Values</span>
             </h2>
           </div>
 
@@ -149,20 +192,28 @@ const About = () => {
             {[
               {
                 title: 'Innovation',
-                description: 'We constantly push the boundaries of technology to deliver cutting-edge solutions.'
+                description: 'We constantly push the boundaries of technology to deliver cutting-edge solutions.',
+                image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop'
               },
               {
                 title: 'Excellence',
-                description: 'We are committed to delivering the highest quality in everything we do.'
+                description: 'We are committed to delivering the highest quality in everything we do.',
+                image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop'
               },
               {
                 title: 'Partnership',
-                description: 'We build lasting relationships based on trust, transparency, and mutual success.'
+                description: 'We build lasting relationships based on trust, transparency, and mutual success.',
+                image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop'
               }
             ].map((value, index) => (
-              <Card key={index} className="p-8 text-center glass-effect border-0 shadow-lg hover-lift">
-                <h3 className="text-2xl font-bold text-primary mb-4">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+              <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="aspect-video overflow-hidden">
+                  <img src={value.image} alt={value.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <div className="p-8 text-center">
+                  <h3 className="text-2xl font-bold text-emerald-600 mb-4">{value.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                </div>
               </Card>
             ))}
           </div>

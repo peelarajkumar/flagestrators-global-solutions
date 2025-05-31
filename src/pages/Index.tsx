@@ -139,32 +139,61 @@ const Index = () => {
         <div className="absolute top-40 right-20 w-16 h-16 bg-green-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '2s' }} />
         <div className="absolute bottom-40 left-20 w-12 h-12 bg-teal-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '4s' }} />
 
-        <div className="relative z-10 container-custom text-center">
-          <div className="max-w-5xl mx-auto">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-poppins font-bold mb-8 animate-slide-up">
-              <span className="text-gradient-primary">Transform Your Business</span>
-              <br />
-              <span className="text-gray-800">with Cutting-Edge Software</span>
-            </h1>
-            
-            <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              We deliver enterprise-grade software solutions, AI integration, and digital transformation 
-              services that drive innovation and accelerate business growth.
-            </p>
+        <div className="relative z-10 container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Content */}
+            <div>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-poppins font-bold mb-8 animate-slide-up">
+                <span className="text-gradient-primary">Transform Your Business</span>
+                <br />
+                <span className="text-gray-800">with Cutting-Edge Software</span>
+              </h1>
+              
+              <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                We deliver enterprise-grade software solutions, AI integration, and digital transformation 
+                services that drive innovation and accelerate business growth.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-scale-in" style={{ animationDelay: '0.6s' }}>
-              <Link to="/contact">
-                <Button className="btn-primary text-lg h-14 px-10">
-                  Start Your Project
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/services">
-                <Button className="btn-secondary text-lg h-14 px-10">
-                  <Play className="mr-2 h-5 w-5" />
-                  Watch Demo
-                </Button>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-6 animate-scale-in" style={{ animationDelay: '0.6s' }}>
+                <Link to="/contact">
+                  <Button className="btn-primary text-lg h-14 px-10">
+                    Start Your Project
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link to="/services">
+                  <Button className="btn-secondary text-lg h-14 px-10">
+                    <Play className="mr-2 h-5 w-5" />
+                    Watch Demo
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right side - Image Carousel */}
+            <div className="relative">
+              <Swiper
+                modules={[Autoplay, Navigation, Pagination]}
+                spaceBetween={20}
+                slidesPerView={1}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                loop={true}
+                pagination={{ clickable: true }}
+                className="w-full h-96 rounded-2xl shadow-2xl animate-slide-left"
+              >
+                {heroImages.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="relative w-full h-full overflow-hidden rounded-2xl">
+                      <img
+                        src={image}
+                        alt={`Hero showcase ${index + 1}`}
+                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         </div>
@@ -174,10 +203,10 @@ const Index = () => {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-20 slide-up">
-            <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6 animate-slide-up">
               Our <span className="text-gradient-primary">Core Services</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
               Comprehensive software solutions tailored to your business needs
             </p>
           </div>
@@ -197,7 +226,7 @@ const Index = () => {
           >
             {services.map((service, index) => (
               <SwiperSlide key={index}>
-                <Card className="h-full glass-morphism border-0 card-hover group overflow-hidden">
+                <Card className="h-full glass-morphism border-0 card-hover group overflow-hidden animate-scale-in" style={{ animationDelay: `${index * 0.2}s` }}>
                   <div className="aspect-video overflow-hidden rounded-t-xl">
                     <img
                       src={service.image}
@@ -241,7 +270,7 @@ const Index = () => {
               { number: '8+', label: 'Years Experience', icon: Star },
               { number: '99%', label: 'Client Satisfaction', icon: Shield }
             ].map((stat, index) => (
-              <Card key={index} className="p-8 glass-morphism border-0 card-hover group slide-up">
+              <Card key={index} className="p-8 glass-morphism border-0 card-hover group slide-up animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="flex justify-center mb-4">
                   <stat.icon className="h-12 w-12 text-emerald-600 group-hover:scale-110 transition-transform duration-300" />
                 </div>
@@ -259,10 +288,10 @@ const Index = () => {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-20 slide-up">
-            <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6 animate-slide-up">
               Recent <span className="text-gradient-primary">Success Stories</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
               Discover how we've helped businesses transform their operations
             </p>
           </div>
@@ -282,7 +311,7 @@ const Index = () => {
           >
             {projectShowcase.map((project, index) => (
               <SwiperSlide key={index}>
-                <Card className="overflow-hidden glass-morphism border-0 card-hover group">
+                <Card className="overflow-hidden glass-morphism border-0 card-hover group animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
                   <div className="aspect-video overflow-hidden">
                     <img
                       src={project.image}
@@ -316,10 +345,10 @@ const Index = () => {
       <section className="section-padding bg-gradient-to-r from-gray-50 to-gray-100">
         <div className="container-custom">
           <div className="text-center mb-20 slide-up">
-            <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-6 animate-slide-up">
               What Our <span className="text-gradient-primary">Clients Say</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
               Real feedback from businesses we've helped transform
             </p>
           </div>
@@ -339,7 +368,7 @@ const Index = () => {
           >
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index}>
-                <Card className="p-8 glass-morphism border-0 card-hover group text-center h-full">
+                <Card className="p-8 glass-morphism border-0 card-hover group text-center h-full animate-scale-in" style={{ animationDelay: `${index * 0.15}s` }}>
                   <div className="flex justify-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
