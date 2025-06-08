@@ -84,37 +84,52 @@ const Contact = () => {
       icon: MapPin,
       title: 'Office Location',
       details: ['Flagestrators Global Software Solutions', 'Hyderabad, Telangana, India'],
-      color: 'from-primary to-secondary'
+      color: 'from-emerald-600 to-green-600'
     },
     {
       icon: Phone,
       title: 'Phone',
       details: ['+91 XXX-XXX-XXXX', 'Available Mon-Fri 9AM-6PM IST'],
-      color: 'from-secondary to-accent'
+      color: 'from-green-600 to-teal-600'
     },
     {
       icon: Mail,
       title: 'Email',
       details: ['contact@flagestrators.com', 'Response within 24 hours'],
-      color: 'from-accent to-primary'
+      color: 'from-teal-600 to-emerald-600'
     },
     {
       icon: Clock,
       title: 'Business Hours',
       details: ['Monday - Friday: 9:00 AM - 6:00 PM', 'Saturday: 10:00 AM - 2:00 PM'],
-      color: 'from-primary to-accent'
+      color: 'from-emerald-600 to-teal-600'
     }
   ];
 
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50/50 via-blue-50/30 to-green-50/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-playfair font-bold mb-6">
-            Get in <span className="text-gradient">Touch</span>
+      <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          {[...Array(10)].map((_, index) => (
+            <div
+              key={index}
+              className="absolute w-16 h-16 bg-emerald-200 rounded-full floating-animation opacity-20"
+              style={{
+                top: `${Math.random() * 80}%`,
+                left: `${Math.random() * 80}%`,
+                animationDelay: `${index * 0.6}s`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-6 animate-slide-up">
+            Get in <span className="text-gradient-primary">Touch</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Ready to transform your business? Let's discuss how our innovative solutions 
             can help you achieve your goals. We're here to answer your questions and provide expert guidance.
           </p>
@@ -122,13 +137,21 @@ const Contact = () => {
       </section>
 
       {/* Contact Form and Info */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Animated decorative images */}
+        <div className="absolute top-20 right-20 w-24 h-24 rounded-2xl overflow-hidden floating-animation opacity-15">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=200&fit=crop" alt="Contact" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-20 left-20 w-20 h-20 rounded-full overflow-hidden floating-animation opacity-15" style={{ animationDelay: '3s' }}>
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=200&h=200&fit=crop" alt="Communication" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div>
-              <Card className="p-8 glass-effect border-0 shadow-lg">
-                <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-6">
+            <div className="animate-slide-left">
+              <Card className="p-8 glass-morphism border-0 shadow-lg">
+                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-6">
                   Send us a Message
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -144,7 +167,7 @@ const Contact = () => {
                         required
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
+                        className="mt-1 border-gray-300 focus:border-emerald-600 focus:ring-emerald-600"
                         placeholder="Your full name"
                       />
                     </div>
@@ -159,7 +182,7 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
+                        className="mt-1 border-gray-300 focus:border-emerald-600 focus:ring-emerald-600"
                         placeholder="your.email@company.com"
                       />
                     </div>
@@ -176,7 +199,7 @@ const Contact = () => {
                         type="text"
                         value={formData.company}
                         onChange={handleInputChange}
-                        className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
+                        className="mt-1 border-gray-300 focus:border-emerald-600 focus:ring-emerald-600"
                         placeholder="Your company name"
                       />
                     </div>
@@ -190,7 +213,7 @@ const Contact = () => {
                         type="tel"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
+                        className="mt-1 border-gray-300 focus:border-emerald-600 focus:ring-emerald-600"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
@@ -207,7 +230,7 @@ const Contact = () => {
                       required
                       value={formData.subject}
                       onChange={handleInputChange}
-                      className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
+                      className="mt-1 border-gray-300 focus:border-emerald-600 focus:ring-emerald-600"
                       placeholder="How can we help you?"
                     />
                   </div>
@@ -223,7 +246,7 @@ const Contact = () => {
                       rows={6}
                       value={formData.message}
                       onChange={handleInputChange}
-                      className="mt-1 border-gray-300 focus:border-primary focus:ring-primary resize-none"
+                      className="mt-1 border-gray-300 focus:border-emerald-600 focus:ring-emerald-600 resize-none"
                       placeholder="Tell us about your project requirements, timeline, and any specific questions you have..."
                     />
                   </div>
@@ -231,7 +254,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white py-3 rounded-lg font-semibold shadow-lg hover-lift"
+                    className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white py-3 rounded-lg font-semibold shadow-lg card-hover"
                   >
                     {isSubmitting ? (
                       'Sending...'
@@ -247,9 +270,9 @@ const Contact = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-6">
+            <div className="space-y-6 animate-slide-right">
               <div className="mb-8">
-                <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-4">
                   Contact Information
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
@@ -259,7 +282,7 @@ const Contact = () => {
               </div>
 
               {contactInfo.map((info, index) => (
-                <Card key={index} className="p-6 glass-effect border-0 shadow-lg hover-lift group">
+                <Card key={index} className="p-6 glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                   <div className="flex items-start space-x-4">
                     <div className={`w-12 h-12 bg-gradient-to-r ${info.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                       <info.icon className="h-6 w-6 text-white" />
@@ -281,21 +304,36 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Visit Our <span className="text-gradient">Office</span>
+      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          {[...Array(5)].map((_, index) => (
+            <div
+              key={index}
+              className="absolute w-20 h-20 bg-emerald-200 rounded-full floating-animation opacity-20"
+              style={{
+                top: `${Math.random() * 80}%`,
+                left: `${Math.random() * 80}%`,
+                animationDelay: `${index * 2}s`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Visit Our <span className="text-gradient-primary">Office</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Located in the heart of Hyderabad's technology hub, we're easily accessible and ready to meet in person.
             </p>
           </div>
 
-          <Card className="overflow-hidden glass-effect border-0 shadow-lg">
-            <div className="aspect-video bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+          <Card className="overflow-hidden glass-morphism border-0 shadow-lg animate-scale-in">
+            <div className="aspect-video bg-gradient-to-r from-emerald-600/20 to-green-600/20 flex items-center justify-center">
               <div className="text-center">
-                <MapPin className="h-16 w-16 text-primary mx-auto mb-4" />
+                <MapPin className="h-16 w-16 text-emerald-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Interactive Map</h3>
                 <p className="text-gray-600">
                   Hyderabad, Telangana, India
@@ -310,11 +348,19 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Frequently Asked <span className="text-gradient">Questions</span>
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Animated decorative images */}
+        <div className="absolute top-10 left-10 w-28 h-28 rounded-2xl overflow-hidden floating-animation opacity-10">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=200&fit=crop" alt="FAQ" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-10 right-10 w-24 h-24 rounded-full overflow-hidden floating-animation opacity-10" style={{ animationDelay: '4s' }}>
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=200&fit=crop" alt="Questions" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Frequently Asked <span className="text-gradient-primary">Questions</span>
             </h2>
             <p className="text-lg text-gray-600">
               Quick answers to common questions about our services and processes
@@ -340,7 +386,7 @@ const Contact = () => {
                 answer: 'We have extensive experience across multiple industries including healthcare, finance, e-commerce, manufacturing, education, and logistics. Our solutions are adaptable to various business domains.'
               }
             ].map((faq, index) => (
-              <Card key={index} className="p-6 glass-effect border-0 shadow-lg hover-lift">
+              <Card key={index} className="p-6 glass-morphism border-0 shadow-lg card-hover animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
                 <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
               </Card>

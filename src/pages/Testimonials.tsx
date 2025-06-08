@@ -93,12 +93,27 @@ const Testimonials = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50/50 via-blue-50/30 to-green-50/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-playfair font-bold mb-6">
-            What Our Clients <span className="text-gradient">Say About Us</span>
+      <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          {[...Array(8)].map((_, index) => (
+            <div
+              key={index}
+              className="absolute w-20 h-20 bg-emerald-200 rounded-full floating-animation opacity-20"
+              style={{
+                top: `${Math.random() * 80}%`,
+                left: `${Math.random() * 80}%`,
+                animationDelay: `${index * 0.8}s`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-6 animate-slide-up">
+            What Our Clients <span className="text-gradient-primary">Say About Us</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Don't just take our word for it. Here's what industry leaders and satisfied clients 
             have to say about their experience working with Flagestrators Global.
           </p>
@@ -106,13 +121,21 @@ const Testimonials = () => {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Animated decorative images */}
+        <div className="absolute top-20 right-10 w-24 h-24 rounded-full overflow-hidden floating-animation opacity-15">
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=200&h=200&fit=crop" alt="Success" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-20 left-10 w-28 h-28 rounded-2xl overflow-hidden floating-animation opacity-15" style={{ animationDelay: '3s' }}>
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&h=200&fit=crop" alt="Team" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-8 glass-effect border-0 shadow-lg hover-lift group relative overflow-hidden">
+              <Card key={index} className="p-8 glass-morphism border-0 shadow-lg card-hover group relative overflow-hidden animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Quote className="h-12 w-12 text-primary" />
+                  <Quote className="h-12 w-12 text-emerald-600" />
                 </div>
                 
                 <div className="relative z-10">
@@ -124,7 +147,7 @@ const Testimonials = () => {
                     />
                     <div>
                       <h3 className="text-lg font-bold text-gray-900">{testimonial.name}</h3>
-                      <p className="text-primary font-medium">{testimonial.title}</p>
+                      <p className="text-emerald-600 font-medium">{testimonial.title}</p>
                       <p className="text-sm text-gray-600">{testimonial.company}</p>
                     </div>
                   </div>
@@ -143,11 +166,13 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <section className="py-20 bg-gradient-to-r from-primary via-secondary to-accent">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white mb-16">
-            <h2 className="text-4xl font-playfair font-bold mb-4">
+      {/* Statistics Section - Fixed with primary green background */}
+      <section className="py-20 bg-gradient-to-r from-emerald-600 to-green-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/5" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center text-white mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold mb-4">
               Client Success by the Numbers
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
@@ -162,8 +187,8 @@ const Testimonials = () => {
               { number: '100%', label: 'On-Time Delivery', description: 'Projects delivered as promised' },
               { number: '45%', label: 'Average ROI Increase', description: 'Measurable business value delivered' }
             ].map((stat, index) => (
-              <div key={index} className="text-center text-white">
-                <div className="text-4xl font-bold font-playfair mb-2">{stat.number}</div>
+              <div key={index} className="text-center text-white animate-scale-in" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="text-4xl font-bold font-poppins mb-2">{stat.number}</div>
                 <h3 className="text-lg font-semibold mb-2">{stat.label}</h3>
                 <p className="text-white/90 text-sm leading-relaxed">{stat.description}</p>
               </div>
@@ -173,11 +198,19 @@ const Testimonials = () => {
       </section>
 
       {/* Trusted by Companies */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Trusted by <span className="text-gradient">Industry Leaders</span>
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute top-1/2 left-10 w-20 h-20 rounded-xl overflow-hidden floating-animation opacity-10">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=200&fit=crop" alt="Company" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-20 right-20 w-16 h-16 rounded-full overflow-hidden floating-animation opacity-10" style={{ animationDelay: '4s' }}>
+          <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=200&fit=crop" alt="Business" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Trusted by <span className="text-gradient-primary">Industry Leaders</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We're proud to partner with companies across various industries and sizes
@@ -186,7 +219,7 @@ const Testimonials = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
             {companyLogos.map((logo, index) => (
-              <div key={index} className="flex justify-center items-center p-4 grayscale hover:grayscale-0 transition-all duration-300 hover-lift">
+              <div key={index} className="flex justify-center items-center p-4 grayscale hover:grayscale-0 transition-all duration-300 card-hover animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <img 
                   src={logo} 
                   alt={`Client ${index + 1}`}
@@ -199,11 +232,26 @@ const Testimonials = () => {
       </section>
 
       {/* Success Stories Preview */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair font-bold text-gray-900 mb-4">
-              Featured <span className="text-gradient">Success Stories</span>
+      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          {[...Array(6)].map((_, index) => (
+            <div
+              key={index}
+              className="absolute w-12 h-12 bg-emerald-200 rounded-full floating-animation opacity-30"
+              style={{
+                top: `${Math.random() * 80}%`,
+                left: `${Math.random() * 80}%`,
+                animationDelay: `${index * 1.5}s`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
+              Featured <span className="text-gradient-primary">Success Stories</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Dive deeper into specific case studies and see how we've transformed businesses
@@ -231,7 +279,7 @@ const Testimonials = () => {
                 image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop'
               }
             ].map((story, index) => (
-              <Card key={index} className="overflow-hidden glass-effect border-0 shadow-lg hover-lift group cursor-pointer">
+              <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group cursor-pointer animate-scale-in" style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="aspect-video overflow-hidden">
                   <img 
                     src={story.image} 
@@ -241,7 +289,7 @@ const Testimonials = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{story.title}</h3>
-                  <p className="text-primary font-semibold mb-1">{story.result}</p>
+                  <p className="text-emerald-600 font-semibold mb-1">{story.result}</p>
                   <p className="text-sm text-gray-600">{story.industry}</p>
                 </div>
               </Card>

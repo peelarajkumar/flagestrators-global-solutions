@@ -3,8 +3,6 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Code, Database, Brain, Cog, Shield, Cloud, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const Services = () => {
   const services = [
@@ -104,25 +102,27 @@ const Services = () => {
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
-        {/* Background carousel */}
-        <div className="absolute inset-0 opacity-5">
-          <Swiper
-            modules={[Autoplay]}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            loop={true}
-            className="w-full h-full"
-          >
-            {backgroundImages.map((image, index) => (
-              <SwiperSlide key={index}>
-                <img src={image} alt={`Background ${index + 1}`} className="w-full h-full object-cover" />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        {/* Animated background images */}
+        <div className="absolute inset-0 opacity-10">
+          {backgroundImages.map((image, index) => (
+            <div
+              key={index}
+              className="absolute w-40 h-40 rounded-2xl overflow-hidden floating-animation"
+              style={{
+                top: `${15 + (index * 25)}%`,
+                right: `${5 + (index * 15)}%`,
+                animationDelay: `${index * 2.5}s`
+              }}
+            >
+              <img src={image} alt={`Background ${index + 1}`} className="w-full h-full object-cover" />
+            </div>
+          ))}
         </div>
 
         {/* Floating elements */}
         <div className="absolute top-20 left-10 w-20 h-20 bg-emerald-200 rounded-full floating-animation opacity-60" />
         <div className="absolute top-40 right-20 w-16 h-16 bg-green-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-20 left-1/3 w-12 h-12 bg-teal-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '4s' }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-6 animate-slide-up">
@@ -136,80 +136,93 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-            }}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            navigation
-            pagination={{ clickable: true }}
-            className="pb-16"
-          >
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Animated decorative images */}
+        <div className="absolute top-10 left-10 w-24 h-24 rounded-xl overflow-hidden floating-animation opacity-15">
+          <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=200&h=200&fit=crop" alt="Development" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-1/3 right-10 w-20 h-20 rounded-full overflow-hidden floating-animation opacity-15" style={{ animationDelay: '3s' }}>
+          <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=200&h=200&fit=crop" alt="Architecture" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-20 left-1/4 w-28 h-28 rounded-2xl overflow-hidden floating-animation opacity-15" style={{ animationDelay: '5s' }}>
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&h=200&fit=crop" alt="AI" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <SwiperSlide key={index}>
-                <Card className="p-8 glass-morphism border-0 shadow-lg card-hover group h-full animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="aspect-video overflow-hidden rounded-xl mb-6">
-                    <img 
-                      src={service.image} 
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+              <Card key={index} className="p-8 glass-morphism border-0 shadow-lg card-hover group h-full animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="aspect-video overflow-hidden rounded-xl mb-6">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                
+                <div className="flex items-start space-x-4 mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="h-8 w-8 text-emerald-600" />
                   </div>
-                  
-                  <div className="flex items-start space-x-4 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="h-8 w-8 text-emerald-600" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors duration-300">{service.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{service.description}</p>
-                    </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors duration-300">{service.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{service.description}</p>
                   </div>
+                </div>
 
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-gray-600">
-                          <div className="w-2 h-2 bg-emerald-600 rounded-full mr-3" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Features:</h4>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-600">
+                        <div className="w-2 h-2 bg-emerald-600 rounded-full mr-3" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Technologies:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {service.technologies.map((tech, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-sm font-medium">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Technologies:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {service.technologies.map((tech, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-sm font-medium">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
-                  <Link to="/contact">
-                    <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white transform hover:scale-105 transition-all duration-300">
-                      Get Started
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </Card>
-              </SwiperSlide>
+                <Link to="/contact">
+                  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white transform hover:scale-105 transition-all duration-300">
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </Card>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          {[...Array(6)].map((_, index) => (
+            <div
+              key={index}
+              className="absolute w-16 h-16 bg-emerald-200 rounded-full floating-animation opacity-20"
+              style={{
+                top: `${Math.random() * 80}%`,
+                left: `${Math.random() * 80}%`,
+                animationDelay: `${index * 1.2}s`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
               Our Development <span className="text-gradient-primary">Process</span>
@@ -219,19 +232,7 @@ const Services = () => {
             </p>
           </div>
 
-          <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            navigation
-            pagination={{ clickable: true }}
-            className="pb-16"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { 
                 step: '01', 
@@ -258,24 +259,22 @@ const Services = () => {
                 image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=200&fit=crop'
               }
             ].map((process, index) => (
-              <SwiperSlide key={index}>
-                <Card className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={process.image} 
-                      alt={process.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6 text-center">
-                    <div className="text-3xl font-bold text-emerald-600 mb-4 font-poppins">{process.step}</div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{process.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{process.description}</p>
-                  </div>
-                </Card>
-              </SwiperSlide>
+              <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={process.image} 
+                    alt={process.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <div className="text-3xl font-bold text-emerald-600 mb-4 font-poppins">{process.step}</div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{process.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{process.description}</p>
+                </div>
+              </Card>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
 

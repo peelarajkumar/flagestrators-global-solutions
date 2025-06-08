@@ -1,8 +1,6 @@
 
 import { Card } from '@/components/ui/card';
 import { Mail, Linkedin, Github } from 'lucide-react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const About = () => {
   const team = [
@@ -58,7 +56,7 @@ const About = () => {
     }
   ];
 
-  const companyImages = [
+  const backgroundImages = [
     'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
     'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop',
     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop',
@@ -69,25 +67,27 @@ const About = () => {
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
-        {/* Background carousel */}
-        <div className="absolute inset-0 opacity-5">
-          <Swiper
-            modules={[Autoplay]}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            loop={true}
-            className="w-full h-full"
-          >
-            {companyImages.map((image, index) => (
-              <SwiperSlide key={index}>
-                <img src={image} alt={`Background ${index + 1}`} className="w-full h-full object-cover" />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        {/* Animated background images */}
+        <div className="absolute inset-0 opacity-10">
+          {backgroundImages.map((image, index) => (
+            <div
+              key={index}
+              className="absolute w-32 h-32 rounded-full overflow-hidden floating-animation"
+              style={{
+                top: `${20 + (index * 15)}%`,
+                left: `${10 + (index * 20)}%`,
+                animationDelay: `${index * 2}s`
+              }}
+            >
+              <img src={image} alt={`Background ${index + 1}`} className="w-full h-full object-cover" />
+            </div>
+          ))}
         </div>
 
         {/* Floating elements */}
         <div className="absolute top-20 left-10 w-20 h-20 bg-emerald-200 rounded-full floating-animation opacity-60" />
         <div className="absolute top-40 right-20 w-16 h-16 bg-green-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-teal-200 rounded-full floating-animation opacity-60" style={{ animationDelay: '4s' }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-6 animate-slide-up">
@@ -101,8 +101,16 @@ const About = () => {
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Animated decorative images */}
+        <div className="absolute top-10 right-10 w-24 h-24 rounded-xl overflow-hidden floating-animation opacity-20">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=200&fit=crop" alt="Vision" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-10 left-10 w-20 h-20 rounded-full overflow-hidden floating-animation opacity-20" style={{ animationDelay: '3s' }}>
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=200&h=200&fit=crop" alt="Mission" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <Card className="p-8 glass-morphism border-0 shadow-lg card-hover animate-slide-left">
               <h2 className="text-3xl font-poppins font-bold text-emerald-600 mb-4">Our Vision</h2>
@@ -124,8 +132,23 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          {[...Array(5)].map((_, index) => (
+            <div
+              key={index}
+              className="absolute w-16 h-16 bg-emerald-200 rounded-full floating-animation opacity-30"
+              style={{
+                top: `${Math.random() * 80}%`,
+                left: `${Math.random() * 80}%`,
+                animationDelay: `${index * 1.5}s`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
               Meet Our <span className="text-gradient-primary">Expert Team</span>
@@ -136,52 +159,49 @@ const About = () => {
             </p>
           </div>
 
-          <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            autoplay={{ delay: 3500, disableOnInteraction: false }}
-            navigation
-            pagination={{ clickable: true }}
-            className="pb-16"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
-              <SwiperSlide key={index}>
-                <Card className="overflow-hidden card-hover glass-morphism border-0 shadow-lg group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="aspect-square overflow-hidden">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+              <Card key={index} className="overflow-hidden card-hover glass-morphism border-0 shadow-lg group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="aspect-square overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+                  <p className="text-emerald-600 font-medium mb-3">{member.role}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
+                  <div className="flex space-x-3">
+                    <a href={member.social.linkedin} className="text-emerald-600 hover:text-emerald-700 transition-colors transform hover:scale-110">
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                    <a href={`mailto:${member.social.email}`} className="text-emerald-600 hover:text-emerald-700 transition-colors transform hover:scale-110">
+                      <Mail className="h-5 w-5" />
+                    </a>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                    <p className="text-emerald-600 font-medium mb-3">{member.role}</p>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
-                    <div className="flex space-x-3">
-                      <a href={member.social.linkedin} className="text-emerald-600 hover:text-emerald-700 transition-colors transform hover:scale-110">
-                        <Linkedin className="h-5 w-5" />
-                      </a>
-                      <a href={`mailto:${member.social.email}`} className="text-emerald-600 hover:text-emerald-700 transition-colors transform hover:scale-110">
-                        <Mail className="h-5 w-5" />
-                      </a>
-                    </div>
-                  </div>
-                </Card>
-              </SwiperSlide>
+                </div>
+              </Card>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
 
       {/* Company Values */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Animated images */}
+        <div className="absolute top-20 right-20 w-32 h-32 rounded-2xl overflow-hidden floating-animation opacity-15">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=300&fit=crop" alt="Innovation" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute bottom-20 left-20 w-28 h-28 rounded-full overflow-hidden floating-animation opacity-15" style={{ animationDelay: '2s' }}>
+          <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=300&h=300&fit=crop" alt="Excellence" className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-xl overflow-hidden floating-animation opacity-10" style={{ animationDelay: '4s' }}>
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=200&h=200&fit=crop" alt="Partnership" className="w-full h-full object-cover" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
               Our <span className="text-gradient-primary">Values</span>
