@@ -17,7 +17,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m here to help you learn more about Flagestrators Global. How can I assist you today?',
+      text: 'Hello! I\'m the Flagestrators AI Assistant. I can help you with questions about our services, company information, or any general inquiries. How can I assist you today?',
       isBot: true,
       timestamp: new Date()
     }
@@ -34,6 +34,82 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
+  const getAIResponse = async (userMessage: string): Promise<string> => {
+    try {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer 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',
+          'Content-Type': 'application/json',
+          'HTTP-Referer': window.location.origin,
+          'X-Title': 'Flagestrators ChatBot'
+        },
+        body: JSON.stringify({
+          model: 'anthropic/claude-3.5-sonnet',
+          messages: [
+            {
+              role: 'system',
+              content: `You are the AI assistant for Flagestrators Global, a leading software development company. Here's key information about the company:
+
+Company Overview:
+- Flagestrators Global is a premier software development company with 8+ years of experience
+- We have delivered 150+ projects for 50+ clients worldwide
+- We specialize in enterprise-grade solutions, AI integration, and digital transformation
+
+Our Services:
+1. Full Stack Development - Custom web and mobile applications using modern technologies
+2. AI Integration - Machine learning, chatbots, automation, and intelligent systems
+3. Data Migration - Seamless data transfer and system modernization
+4. Process Automation - Workflow optimization and business process automation
+5. Cloud Solutions - AWS, Azure, Google Cloud deployment and management
+6. E-commerce Solutions - Online stores, payment integration, inventory management
+7. Enterprise Software - CRM, ERP, and custom business applications
+
+Our Expertise:
+- Frontend: React, Angular, Vue.js, TypeScript, Tailwind CSS
+- Backend: Node.js, Python, Java, .NET, PHP
+- Databases: PostgreSQL, MongoDB, MySQL, Redis
+- Cloud: AWS, Azure, Google Cloud Platform
+- AI/ML: TensorFlow, PyTorch, OpenAI, Anthropic Claude
+- Mobile: React Native, Flutter, iOS, Android
+
+Key Differentiators:
+- 24/7 support and maintenance
+- Agile development methodology
+- Scalable and secure solutions
+- Competitive pricing
+- Quick turnaround times
+- Post-launch support and updates
+
+Contact Information:
+- Available for consultation and project discussions
+- Free initial consultation
+- Custom quotes based on project requirements
+
+Please provide helpful, accurate information about our services while being friendly and professional. If asked about specific pricing, suggest scheduling a consultation for detailed quotes. Always maintain a helpful and solution-oriented tone.`
+            },
+            {
+              role: 'user',
+              content: userMessage
+            }
+          ],
+          temperature: 0.7,
+          max_tokens: 500
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.choices[0]?.message?.content || 'I apologize, but I\'m having trouble processing your request right now. Please try again.';
+    } catch (error) {
+      console.error('Error calling OpenRouter API:', error);
+      return 'I\'m experiencing some technical difficulties at the moment. Please try again later or contact our support team directly.';
+    }
+  };
+
   const sendMessage = async () => {
     if (!inputValue.trim()) return;
 
@@ -45,40 +121,32 @@ const ChatBot = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputValue;
     setInputValue('');
     setIsTyping(true);
 
     try {
-      // Simulate API call for now - replace with actual OpenRouter integration
-      setTimeout(() => {
-        const botResponse: Message = {
-          id: (Date.now() + 1).toString(),
-          text: getBotResponse(inputValue),
-          isBot: true,
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, botResponse]);
-        setIsTyping(false);
-      }, 1500);
+      const aiResponse = await getAIResponse(currentInput);
+      
+      const botResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: aiResponse,
+        isBot: true,
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, botResponse]);
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error getting AI response:', error);
+      const errorResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: 'I apologize, but I\'m having trouble connecting right now. Please try again later.',
+        isBot: true,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorResponse]);
+    } finally {
       setIsTyping(false);
-    }
-  };
-
-  const getBotResponse = (input: string): string => {
-    const lowerInput = input.toLowerCase();
-    
-    if (lowerInput.includes('service') || lowerInput.includes('what do you do')) {
-      return 'We offer comprehensive software solutions including Full Stack Development, AI Integration, Data Migration, and Process Automation. Would you like to know more about any specific service?';
-    } else if (lowerInput.includes('price') || lowerInput.includes('cost')) {
-      return 'Our pricing varies based on project scope and requirements. I\'d be happy to schedule a consultation to discuss your specific needs and provide a detailed quote.';
-    } else if (lowerInput.includes('contact') || lowerInput.includes('demo')) {
-      return 'I can help you get in touch with our team! You can reach us through our contact page or I can schedule a demo for you. What would you prefer?';
-    } else if (lowerInput.includes('experience') || lowerInput.includes('portfolio')) {
-      return 'We have 8+ years of experience delivering 150+ projects for 50+ clients. Our team specializes in enterprise-grade solutions, AI integration, and digital transformation.';
-    } else {
-      return 'That\'s a great question! Our team at Flagestrators Global specializes in software solutions that transform businesses. Would you like to know more about our services or schedule a consultation?';
     }
   };
 
@@ -115,8 +183,8 @@ const ChatBot = () => {
               <div className="flex items-center space-x-3">
                 <div className="w-3 h-3 bg-green-300 rounded-full animate-pulse" />
                 <div>
-                  <h3 className="font-semibold">Flagestrators Assistant</h3>
-                  <p className="text-xs text-emerald-100">Online • Typically replies instantly</p>
+                  <h3 className="font-semibold">Flagestrators AI Assistant</h3>
+                  <p className="text-xs text-emerald-100">Online • Powered by AI</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -155,7 +223,7 @@ const ChatBot = () => {
                             : 'bg-gradient-to-r from-emerald-600 to-green-600 text-white animate-slide-left'
                         }`}
                       >
-                        <p className="text-sm leading-relaxed">{message.text}</p>
+                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.text}</p>
                         <p className={`text-xs mt-2 ${
                           message.isBot ? 'text-gray-500' : 'text-emerald-100'
                         }`}>
@@ -187,8 +255,9 @@ const ChatBot = () => {
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       onKeyPress={handleKeyPress}
-                      placeholder="Type your message..."
+                      placeholder="Ask me anything about Flagestrators..."
                       className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
+                      disabled={isTyping}
                     />
                     <Button
                       onClick={sendMessage}
