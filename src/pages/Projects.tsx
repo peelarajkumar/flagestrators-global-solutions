@@ -1,4 +1,3 @@
-
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -123,7 +122,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
         {/* Floating elements */}
@@ -144,10 +143,10 @@ const Projects = () => {
       {/* Projects Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="aspect-video overflow-hidden relative">
+              <Card key={index} className="h-full flex flex-col overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="aspect-video overflow-hidden relative flex-shrink-0">
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -160,61 +159,71 @@ const Projects = () => {
                   </div>
                 </div>
                 
-                <div className="p-8">
+                <div className="p-6 flex flex-col flex-grow">
                   <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{project.title}</h3>
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem]">{project.title}</h3>
                       <p className="text-emerald-600 font-semibold mb-1">{project.client}</p>
                       <p className="text-sm text-gray-600 font-medium">{project.category} • {project.year}</p>
                     </div>
                   </div>
 
-                  <p className="text-gray-700 leading-relaxed mb-6 font-medium">{project.description}</p>
+                  <p className="text-gray-700 leading-relaxed mb-4 font-medium text-sm flex-grow min-h-[4rem] line-clamp-3">{project.description}</p>
 
-                  <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="grid grid-cols-3 gap-3 mb-4">
                     <div className="text-center">
-                      <Calendar className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
-                      <p className="text-sm font-semibold text-gray-900">{project.duration}</p>
+                      <Calendar className="h-4 w-4 text-emerald-600 mx-auto mb-1" />
+                      <p className="text-xs font-semibold text-gray-900">{project.duration}</p>
                       <p className="text-xs text-gray-600">Duration</p>
                     </div>
                     <div className="text-center">
-                      <Users className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
-                      <p className="text-sm font-semibold text-gray-900">{project.team}</p>
+                      <Users className="h-4 w-4 text-emerald-600 mx-auto mb-1" />
+                      <p className="text-xs font-semibold text-gray-900">{project.team}</p>
                       <p className="text-xs text-gray-600">Team Size</p>
                     </div>
                     <div className="text-center">
-                      <TrendingUp className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
-                      <p className="text-sm font-semibold text-gray-900">{project.outcomes.length}</p>
+                      <TrendingUp className="h-4 w-4 text-emerald-600 mx-auto mb-1" />
+                      <p className="text-xs font-semibold text-gray-900">{project.outcomes.length}</p>
                       <p className="text-xs text-gray-600">Key Results</p>
                     </div>
                   </div>
 
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Outcomes:</h4>
-                    <div className="space-y-2">
-                      {project.outcomes.map((outcome, idx) => (
-                        <div key={idx} className="flex items-start text-gray-700 text-sm font-medium">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0" />
-                          {outcome}
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Key Outcomes:</h4>
+                    <div className="space-y-1 min-h-[5rem]">
+                      {project.outcomes.slice(0, 3).map((outcome, idx) => (
+                        <div key={idx} className="flex items-start text-gray-700 text-xs font-medium">
+                          <div className="w-1 h-1 bg-green-500 rounded-full mt-1.5 mr-2 flex-shrink-0" />
+                          <span className="line-clamp-1">{outcome}</span>
                         </div>
                       ))}
+                      {project.outcomes.length > 3 && (
+                        <div className="text-xs text-gray-500 font-medium">
+                          +{project.outcomes.length - 3} more outcomes
+                        </div>
+                      )}
                     </div>
                   </div>
 
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Technology Stack:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Technology Stack:</h4>
+                    <div className="flex flex-wrap gap-1 min-h-[3rem]">
+                      {project.technologies.slice(0, 4).map((tech, idx) => (
+                        <span key={idx} className="px-2 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-medium">
                           {tech}
                         </span>
                       ))}
+                      {project.technologies.length > 4 && (
+                        <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
+                          +{project.technologies.length - 4}
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white">
+                  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white mt-auto">
                     View Case Study
-                    <ExternalLink className="ml-2 h-4 w-4" />
+                    <ExternalLink className="ml-2 h-3 w-3" />
                   </Button>
                 </div>
               </Card>
