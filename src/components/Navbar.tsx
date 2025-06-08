@@ -19,18 +19,20 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Products', path: '/products' },
     { name: 'Projects', path: '/projects' },
+    { name: 'About', path: '/about' },
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Contact', path: '/contact' },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'glass-morphism shadow-lg' : 'bg-white/90 backdrop-blur-sm'
-    }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "glass-morphism shadow-lg" : "bg-white/90 backdrop-blur-sm"
+      }`}
+    >
       <div className="container-custom">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center space-x-3 group">
@@ -45,25 +47,39 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`relative px-4 py-2 text-lg font-medium transition-all duration-300 ${
-                  location.pathname === item.path
-                    ? 'text-emerald-600'
-                    : 'text-gray-700 hover:text-emerald-600'
-                } group`}
-              >
-                {item.name}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-emerald-600 transform origin-left transition-transform duration-300 ${
-                  location.pathname === item.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                }`} />
-              </Link>
-            ))}
-            <Button className="btn-primary ml-6">
-              Get Started
-            </Button>
+            {navItems.map((item) => {
+              const isContact = item.name.toLowerCase() === "contact";
+              const isActive = location.pathname === item.path;
+
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={
+                    isContact
+                      ? "btn-primary ml-2 px-4 py-1.5 text-sm rounded-md shadow-sm"
+                      : `relative px-4 py-2 text-lg font-medium transition-all duration-300 group ${
+                          isActive
+                            ? "text-emerald-600"
+                            : "text-gray-700 hover:text-emerald-600"
+                        }`
+                  }
+                >
+                  {item.name}
+
+                  {/* Hide underline for Contact */}
+                  {!isContact && (
+                    <span
+                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-emerald-600 transform origin-left transition-transform duration-300 ${
+                        isActive
+                          ? "scale-x-100"
+                          : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile menu button */}
@@ -74,7 +90,11 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-emerald-600 hover:bg-emerald-50"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -89,17 +109,15 @@ const Navbar = () => {
                   to={item.path}
                   className={`block px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 ${
                     location.pathname === item.path
-                      ? 'text-emerald-600 bg-emerald-50'
-                      : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
+                      ? "text-emerald-600 bg-emerald-50"
+                      : "text-gray-700 hover:text-emerald-600 hover:bg-emerald-50"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button className="btn-primary w-full mt-4">
-                Get Started
-              </Button>
+              <Button className="btn-primary w-full mt-4">Get Started</Button>
             </div>
           </div>
         )}

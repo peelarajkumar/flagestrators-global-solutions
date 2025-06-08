@@ -7,7 +7,7 @@ const About = () => {
     {
       name: 'P Murali Krishna',
       role: 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
+      image: '/assets/images/ceo-img.jpeg',
       bio: 'Visionary leader driving innovation in enterprise software solutions with extensive experience in business strategy and technology leadership.',
       social: {
         linkedin: '#',
@@ -15,7 +15,7 @@ const About = () => {
       }
     },
     {
-      name: 'Hari Krishna',
+      name: 'M Hari Krishna',
       role: 'Senior Architect',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
       bio: 'Expert in designing scalable system architectures and leading complex software implementations across diverse technology stacks.',
@@ -25,9 +25,9 @@ const About = () => {
       }
     },
     {
-      name: 'Ravi Teja',
-      role: 'Technical Lead, Senior Full Stack Developer',
-      image: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=300&h=300&fit=crop&crop=face',
+      name: 'A Ravi Teja',
+      role: 'Technical Lead',
+      image: '/assets/images/tejdev.jpg',
       bio: 'Full-stack development expert specializing in modern web technologies, microservices, and cloud-native solutions.',
       social: {
         linkedin: '#',
@@ -35,17 +35,17 @@ const About = () => {
       }
     },
     {
-      name: 'Rajkumar',
-      role: 'Senior Full Stack Developer, AI Integration Engineer',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face',
-      bio: 'AI integration specialist with deep expertise in machine learning implementations and intelligent automation solutions.',
+      name: 'P Rajkumar',
+      role: 'AI Engineer',
+      image: '/assets/images/rajdev.jpeg',
+      bio: 'AI integration specialist with deep expertise in web development and intelligent automation solutions.',
       social: {
         linkedin: '#',
         email: 'rajkumar@flagestrators.com'
       }
     },
     {
-      name: 'Shiva',
+      name: 'L Shiva',
       role: 'Senior Business Analyst',
       image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face',
       bio: 'Business analysis expert bridging technology and business requirements to deliver solutions that drive measurable outcomes.',

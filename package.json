@@ -83,5 +83,9 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
-  }
+  },
+  "description": "Welcome to the official repository of **Flagestrators Global Solutions** – a visionary platform combining modern web technology and AI to showcase our brand, services, and global presence.",
+  "main": "eslint.config.js",
+  "author": "rajkumar",
+  "license": "ISC"
 }
