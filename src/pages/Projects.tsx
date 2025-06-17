@@ -19,27 +19,9 @@ const Projects = () => {
         '60% decrease in operational costs',
         'Enhanced security with AI fraud detection'
       ],
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+      image: 'https://thedatascientist.com/wp-content/uploads/2025/01/Digital-bankin.webp?w=600&h=400&fit=crop',
       status: 'Completed',
       year: '2024'
-    },
-    {
-      title: 'Healthcare Data Analytics Platform',
-      client: 'Healthcare Consortium',
-      category: 'Healthcare',
-      duration: '12 months',
-      team: '8 developers',
-      description: 'Advanced healthcare analytics platform with AI-powered diagnostic insights, patient data management, and real-time monitoring capabilities.',
-      technologies: ['Python', 'TensorFlow', 'React', 'MongoDB', 'Apache Spark', 'AWS'],
-      outcomes: [
-        '40% improvement in diagnostic accuracy',
-        'Real-time patient monitoring for 10,000+ patients',
-        '50% reduction in administrative overhead',
-        'HIPAA-compliant data processing'
-      ],
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop',
-      status: 'Completed',
-      year: '2023'
     },
     {
       title: 'E-commerce Automation Suite',
@@ -56,6 +38,24 @@ const Projects = () => {
         '45% reduction in manual processes'
       ],
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+      status: 'Completed',
+      year: '2023'
+    },
+    {
+      title: 'Healthcare Data Analytics Platform',
+      client: 'Healthcare Consortium',
+      category: 'Healthcare',
+      duration: '12 months',
+      team: '8 developers',
+      description: 'Advanced healthcare analytics platform with AI-powered diagnostic insights, patient data management, and real-time monitoring capabilities.',
+      technologies: ['Python', 'TensorFlow', 'React', 'MongoDB', 'Apache Spark', 'AWS'],
+      outcomes: [
+        '40% improvement in diagnostic accuracy',
+        'Real-time patient monitoring for 10,000+ patients',
+        '50% reduction in administrative overhead',
+        'HIPAA-compliant data processing'
+      ],
+      image: 'https://wallpaperaccess.com/full/136934.jpg?w=600&h=400&fit=crop',
       status: 'Completed',
       year: '2023'
     },
@@ -205,7 +205,7 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <h4 className="text-sm font-semibold text-gray-900 mb-2">Technology Stack:</h4>
                     <div className="flex flex-wrap gap-1 min-h-[3rem]">
                       {project.technologies.slice(0, 4).map((tech, idx) => (
@@ -219,12 +219,7 @@ const Projects = () => {
                         </span>
                       )}
                     </div>
-                  </div>
-
-                  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white mt-auto">
-                    View Case Study
-                    <ExternalLink className="ml-2 h-3 w-3" />
-                  </Button>
+                  </div> */}
                 </div>
               </Card>
             ))}

@@ -7,7 +7,7 @@ const About = () => {
     {
       name: 'P Murali Krishna',
       role: 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
+      image: '/assets/images/ceo-img.jpeg',
       bio: 'Visionary leader driving innovation in enterprise software solutions with extensive experience in business strategy and technology leadership.',
       social: {
         linkedin: '#',
@@ -15,7 +15,7 @@ const About = () => {
       }
     },
     {
-      name: 'Hari Krishna',
+      name: 'M Hari Krishna',
       role: 'Senior Architect',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
       bio: 'Expert in designing scalable system architectures and leading complex software implementations across diverse technology stacks.',
@@ -25,9 +25,9 @@ const About = () => {
       }
     },
     {
-      name: 'Ravi Teja',
-      role: 'Technical Lead, Senior Full Stack Developer',
-      image: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=300&h=300&fit=crop&crop=face',
+      name: 'A Ravi Teja',
+      role: 'Technical Lead',
+      image: '/assets/images/tejdev.jpg',
       bio: 'Full-stack development expert specializing in modern web technologies, microservices, and cloud-native solutions.',
       social: {
         linkedin: '#',
@@ -35,17 +35,17 @@ const About = () => {
       }
     },
     {
-      name: 'Rajkumar',
-      role: 'Senior Full Stack Developer, AI Integration Engineer',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face',
-      bio: 'AI integration specialist with deep expertise in machine learning implementations and intelligent automation solutions.',
+      name: 'P Rajkumar',
+      role: 'AI Engineer',
+      image: '/assets/images/rajdev.jpeg',
+      bio: 'AI integration specialist with deep expertise in web development and intelligent automation solutions.',
       social: {
         linkedin: '#',
         email: 'rajkumar@flagestrators.com'
       }
     },
     {
-      name: 'Shiva',
+      name: 'L Shiva',
       role: 'Senior Business Analyst',
       image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face',
       bio: 'Business analysis expert bridging technology and business requirements to deliver solutions that drive measurable outcomes.',
@@ -162,13 +162,13 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <Card key={index} className="overflow-hidden card-hover glass-morphism border-0 shadow-lg group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="aspect-square overflow-hidden">
+                {/* <div className="aspect-square overflow-hidden">
                   <img 
                     src={member.image} 
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                </div>
+                </div> */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
                   <p className="text-emerald-600 font-medium mb-3">{member.role}</p>
@@ -213,17 +213,17 @@ const About = () => {
               {
                 title: 'Innovation',
                 description: 'We constantly push the boundaries of technology to deliver cutting-edge solutions.',
-                image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop'
+                image: 'https://img.freepik.com/premium-photo/young-business-people-working-together-modern-office_146671-32300.jpg?w=400&h=300&fit=crop'
               },
               {
                 title: 'Excellence',
                 description: 'We are committed to delivering the highest quality in everything we do.',
-                image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop'
+                image: 'https://t3.ftcdn.net/jpg/05/90/81/12/360_F_590811228_qjIOmmk1uTJputl3myKsKjMXwSD6hYQA.jpg?w=400&h=300&fit=crop'
               },
               {
                 title: 'Partnership',
                 description: 'We build lasting relationships based on trust, transparency, and mutual success.',
-                image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop'
+                image: 'https://th.bing.com/th/id/R.8fd119a065478bfe3ed273da840fa968?rik=sqMznfpIFCZU%2fA&riu=http%3a%2f%2fnanoprotech.pk%2fwp-content%2fuploads%2f2016%2f08%2fPartnership.jpg&ehk=2yTWYzzeik4ObbWYvDE3HEuKwHw8pa2S007hQS%2bGHcY%3d&risl=&pid=ImgRaw&r=0?w=400&h=300&fit=crop'
               }
             ].map((value, index) => (
               <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>

@@ -45,10 +45,10 @@ const Contact = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Uncomment and configure when you have EmailJS set up:
-      /*
+      
       await emailjs.send(
-        'your_service_id', // Replace with your EmailJS service ID
-        'your_template_id', // Replace with your EmailJS template ID
+        'service_rw6h1zo', 
+        'template_xpzcm68',
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -56,11 +56,10 @@ const Contact = () => {
           phone: formData.phone,
           subject: formData.subject,
           message: formData.message,
-          to_email: 'contact@flagestrators.com'
+          to_email: 'flagestratorglobalsolutions@gmail.com'
         },
-        'your_public_key' // Replace with your EmailJS public key
+        'oONbShdkVAmtNv2oz'
       );
-      */
 
       toast.success('Message sent successfully! We\'ll get back to you soon.');
       setFormData({
@@ -89,13 +88,13 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+91 XXX-XXX-XXXX', 'Available Mon-Fri 9AM-6PM IST'],
+      details: ['+91 9849297629', 'Available Mon-Fri 9AM-6PM IST'],
       color: 'from-green-600 to-teal-600'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['contact@flagestrators.com', 'Response within 24 hours'],
+      details: ['contact@flagestrator.com', 'Response within 24 hours'],
       color: 'from-teal-600 to-emerald-600'
     },
     {

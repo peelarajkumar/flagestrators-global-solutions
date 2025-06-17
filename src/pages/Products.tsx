@@ -23,13 +23,13 @@ const Products = () => {
       technologies: ['Python', 'TensorFlow', 'Apache Kafka', 'Elasticsearch'],
       category: 'AI & Machine Learning',
       status: 'Available',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop'
+      image: 'https://th.bing.com/th/id/OIP.d_1vVnJznZBJA6wR2cpjwwHaHa?rs=1&pid=ImgDetMain?w=600&h=400&fit=crop'
     },
     {
       icon: Database,
       title: 'DataFlow Pro',
       subtitle: 'Enterprise Data Migration & ETL Platform',
-      description: 'Advanced data migration and ETL solution designed for seamless legacy system modernization and data transformation.',
+      description: 'Advanced data migration and ETL solution designed for seamless legacy system modernization, intelligent data mapping, scalable transformation, and integration efficiency.',
       features: [
         'Visual ETL Designer',
         'Real-time Data Sync',
@@ -47,7 +47,7 @@ const Products = () => {
       icon: Users,
       title: 'CRM360',
       subtitle: 'Next-Generation Customer Relationship Management',
-      description: 'Modern CRM solution with AI-powered insights, automated workflows, and comprehensive customer journey tracking.',
+      description: 'Modern CRM solution with AI-powered insights, automated workflows, and comprehensive customer journey tracking real-time analytics, and seamless integration capabilities.',
       features: [
         'AI-Powered Lead Scoring',
         'Automated Workflows',
@@ -77,7 +77,7 @@ const Products = () => {
       technologies: ['React', 'D3.js', 'Apache Superset', 'ClickHouse'],
       category: 'Analytics',
       status: 'Available',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'
+      image: 'https://wallpaperaccess.com/full/1826227.jpg?w=600&h=400&fit=crop'
     },
     {
       icon: Cloud,
@@ -95,13 +95,13 @@ const Products = () => {
       technologies: ['Kubernetes', 'Terraform', 'Jenkins', 'Prometheus'],
       category: 'DevOps',
       status: 'Beta',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop'
+      image: 'https://phoenixnap.com/blog/wp-content/uploads/2021/08/community-cloud-overview.jpg?w=600&h=400&fit=crop'
     },
     {
       icon: Shield,
       title: 'SecureGuard',
       subtitle: 'Enterprise Security & Compliance Platform',
-      description: 'Advanced security platform providing comprehensive threat detection, compliance monitoring, and automated security responses.',
+      description: 'Advanced security platform providing comprehensive threat detection, compliance monitoring, and automated security.',
       features: [
         'Threat Detection & Response',
         'Compliance Monitoring',
@@ -113,7 +113,7 @@ const Products = () => {
       technologies: ['Python', 'ELK Stack', 'Splunk', 'SIEM'],
       category: 'Security',
       status: 'Coming Soon',
-      image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop'
+      image: 'https://www.symestic.com/hubfs/software%20securitiy.jpg?w=600&h=400&fit=crop'
     }
   ];
 
@@ -147,87 +147,92 @@ const Products = () => {
 
       {/* Products Grid */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {products.map((product, index) => (
-              <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                
-                <div className="p-8">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center">
-                        <product.icon className="h-6 w-6 text-emerald-600" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900">{product.title}</h3>
-                        <p className="text-emerald-600 font-semibold">{product.subtitle}</p>
-                      </div>
-                    </div>
-                    <Badge className={`${getStatusColor(product.status)} border`}>
-                      {product.status}
-                    </Badge>
-                  </div>
-
-                  <p className="text-gray-700 leading-relaxed mb-6 font-medium">{product.description}</p>
-
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Features:</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {product.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-gray-700 text-sm font-medium">
-                          <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full mr-2" />
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Use Cases:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {product.useCases.map((useCase, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
-                          {useCase}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Built With:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {product.technologies.map((tech, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex space-x-3">
-                    <Link to="/contact" className="flex-1">
-                      <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white">
-                        Request Demo
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
-                    <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
-                      Learn More
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            ))}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {products.map((product, index) => (
+        <Card
+          key={index}
+          className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in"
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          <div className="aspect-video overflow-hidden">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
           </div>
-        </div>
-      </section>
+
+          <div className="p-8">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center">
+                  <product.icon className="h-6 w-6 text-emerald-600" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">{product.title}</h3>
+                  <p className="text-emerald-600 font-semibold">{product.subtitle}</p>
+                </div>
+              </div>
+              <Badge className={`${getStatusColor(product.status)} border`}>
+                {product.status}
+              </Badge>
+            </div>
+
+            <p className="text-gray-700 leading-relaxed mb-6 font-medium">{product.description}</p>
+
+            <div className="mb-6">
+              <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Features:</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {product.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center text-gray-700 text-sm font-medium">
+                    <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full mr-2" />
+                    {feature}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* <div className="mb-6">
+              <h4 className="text-lg font-semibold text-gray-900 mb-3">Use Cases:</h4>
+              <div className="flex flex-wrap gap-2">
+                {product.useCases.map((useCase, idx) => (
+                  <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
+                    {useCase}
+                  </span>
+                ))}
+              </div>
+            </div> */}
+
+            {/* <div className="mb-6">
+              <h4 className="text-lg font-semibold text-gray-900 mb-3">Built With:</h4>
+              <div className="flex flex-wrap gap-2">
+                {product.technologies.map((tech, idx) => (
+                  <span key={idx} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div> */}
+
+            <div className="flex space-x-3">
+              <Link to="/contact" className="flex-1">
+                <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white">
+                  Request Demo
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
+                Learn More
+              </Button>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Product Categories */}
       <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20">
@@ -280,7 +285,7 @@ const Products = () => {
                 title: 'Industry-Specific Solutions',
                 description: 'Tailored software solutions designed for specific industries and regulatory requirements.',
                 icon: Settings,
-                image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop'
+                image: 'https://www.fededacademy.com/wp-content/uploads/2023/01/feded-academy-business-professionals-federal-employee-benefits-19.jpg?w=400&h=300&fit=crop'
               },
               {
                 title: 'Integration Services',
@@ -292,7 +297,7 @@ const Products = () => {
                 title: 'White-Label Options',
                 description: 'Rebrand our products with your company identity for resale or internal deployment.',
                 icon: Code,
-                image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop'
+                image: 'https://th.bing.com/th/id/R.f80c8408a78d179b7fa235ba82ad62e6?rik=IjO51ffhk%2bfREw&riu=http%3a%2f%2flegalserviceindia.com%2flegal%2fuploads%2fbasicsofnegotiationitsprocess_681548309.jpg&ehk=B7%2f5u8DNV12UOfjAE9QTmWOh0XfdgZ%2f%2biYxxfsAcQO0%3d&risl=&pid=ImgRaw&r=0?w=400&h=300&fit=crop'
               }
             ].map((service, index) => (
               <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-scale-in" style={{ animationDelay: `${index * 0.2}s` }}>
@@ -335,7 +340,7 @@ const Products = () => {
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-3 rounded-full font-semibold">
+              <Button size="lg" variant="outline" className="border-white text-emerald-600 hover:bg-gray-100 hover:text-emerald-600 px-8 py-3 rounded-full font-semibold">
                 Request Custom Solution
               </Button>
             </Link>

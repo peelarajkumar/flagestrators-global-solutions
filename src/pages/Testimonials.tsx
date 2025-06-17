@@ -10,7 +10,7 @@ const Testimonials = () => {
       company: 'TechCorp Industries',
       rating: 5,
       text: 'Flagestrators Global transformed our legacy systems into a modern, scalable platform. Their AI integration has improved our operational efficiency by 60%. Outstanding technical expertise and project management.',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face'
+      image: '/assets/images/tech-corp-ceo.jpg?w=150&h=150&fit=crop&crop=face'
     },
     {
       name: 'Michael Chen',
@@ -71,12 +71,12 @@ const Testimonials = () => {
   ];
 
   const companyLogos = [
-    'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop',
+    'https://indiancompanies.in/wp-content/uploads/2021/10/About-Vakrangee-Ltd-Company-Information-1536x736.png?w=200&h=100&fit=crop',
     'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=100&fit=crop',
-    'https://images.unsplash.com/photo-1560472355-536de3962603?w=200&h=100&fit=crop',
-    'https://images.unsplash.com/photo-1560472354-adf27b0d2d6a?w=200&h=100&fit=crop',
-    'https://images.unsplash.com/photo-1560472355-ac8a87cd7de5?w=200&h=100&fit=crop',
-    'https://images.unsplash.com/photo-1560472355-176d1fad1edc?w=200&h=100&fit=crop'
+    'https://th.bing.com/th/id/OIP.npElRrKtaKpKHrkOMGGSlgHaHk?rs=1&pid=ImgDetMain?w=200&h=100&fit=crop',
+    'https://trufcreative.com/wp-content/uploads/2022/04/truf-igcc-new-logo.jpg?w=200&h=100&fit=crop',
+    'https://image3.mouthshut.com/images/imagesp/925843075s.jpg?w=200&h=100&fit=crop',
+    '/assets/images/infused-growth-logo.jpeg?w=200&h=100&fit=crop'
   ];
 
   const renderStars = (rating: number) => {
@@ -264,13 +264,13 @@ const Testimonials = () => {
                 title: 'Banking Platform Modernization',
                 result: '75% faster transactions',
                 industry: 'Financial Services',
-                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop'
+                image: 'https://thedatascientist.com/wp-content/uploads/2025/01/Digital-bankin.webp?w=400&h=250&fit=crop'
               },
               {
                 title: 'Healthcare Analytics Platform',
                 result: '40% improved diagnostic accuracy',
                 industry: 'Healthcare',
-                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=250&fit=crop'
+                image: 'https://www.innohealthsci.com/wp-content/uploads/2022/12/home-products.jpg?w=400&h=250&fit=crop'
               },
               {
                 title: 'E-commerce Automation',

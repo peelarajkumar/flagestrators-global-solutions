@@ -27,39 +27,39 @@ const Index = () => {
   }, []);
 
   const heroImages = [
-    'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop',
+    'https://ia-ace.org/wp-content/uploads/2023/07/Untitled-design-10.png?w=800&h=600&fit=crop',
     'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop',
+    'https://www.gtntechnicalstaffing.com/wp-content/uploads/2021/04/programmer-build-influence.jpeg?w=800&h=600&fit=crop',
     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop'
   ];
 
   const services = [
     {
       icon: Code,
-      title: 'Full Stack Development',
+      title: 'Application Development',
       description: 'End-to-end web application development with cutting-edge technologies',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
+      image: 'https://wallpaperaccess.com/full/4391695.jpg?w=400&h=300&fit=crop',
       features: ['React/Vue.js', 'Node.js/Python', 'Cloud Deployment']
     },
     {
       icon: Brain,
       title: 'AI Integration',
       description: 'Intelligent automation and machine learning solutions for your business',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
+      image: 'https://www.synapse-innovation.com/wp-content/uploads/2019/12/iStock-851956310.jpg?w=400&h=300&fit=crop',
       features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision']
     },
     {
       icon: Database,
       title: 'Data Migration',
       description: 'Seamless legacy system migration and data transformation services',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
+      image: 'https://wallpaperaccess.com/full/2481551.png?w=400&h=300&fit=crop',
       features: ['ETL Processes', 'Database Optimization', 'Real-time Sync']
     },
     {
       icon: Zap,
       title: 'Process Automation',
       description: 'Streamline your operations with intelligent workflow automation',
-      image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=300&fit=crop',
+      image: 'https://pinnacleqm.com/wp-content/uploads/2022/07/enable-automation.jpg?w=400&h=300&fit=crop',
       features: ['Workflow Automation', 'API Integration', 'Business Intelligence']
     }
   ];
@@ -70,7 +70,7 @@ const Index = () => {
       position: 'CTO, TechCorp',
       content: 'Flagestrators transformed our legacy systems into a modern, scalable platform. Their expertise in AI integration saved us months of development time.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face'
+      image: '/assets/images/tech-corp-ceo.jpg?w=150&h=150&fit=crop&crop=face'
     },
     {
       name: 'Michael Chen',
@@ -104,8 +104,8 @@ const Index = () => {
     {
       title: 'Healthcare Data Migration',
       description: 'Migrated legacy healthcare systems to cloud infrastructure',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop',
-      tech: ['Angular', 'Java', 'Azure', 'HIPAA Compliance']
+      image: 'https://www.innohealthsci.com/wp-content/uploads/2022/12/home-products.jpg?w=600&h=400&fit=crop',
+      tech: ['Next', 'Java', 'Azure', 'HIPAA Compliance']
     }
   ];
 
@@ -363,7 +363,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/services">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 text-lg h-14 px-10 font-semibold">
+              <Button variant="outline" className="bg-white text-emerald-600 hover:bg-gray-100 hover:text-emerald-600 text-lg h-14 px-10 font-semibold">
                 Learn More
               </Button>
             </Link>
