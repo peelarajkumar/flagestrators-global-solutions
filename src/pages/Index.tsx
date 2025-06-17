@@ -70,7 +70,7 @@ const Index = () => {
       position: 'CTO, TechCorp',
       content: 'Flagestrators transformed our legacy systems into a modern, scalable platform. Their expertise in AI integration saved us months of development time.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face'
+      image: '/assets/images/tech-corp-ceo.jpg?w=150&h=150&fit=crop&crop=face'
     },
     {
       name: 'Michael Chen',
@@ -363,7 +363,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/services">
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 text-lg h-14 px-10 font-semibold">
+              <Button variant="outline" className="bg-white text-emerald-600 hover:bg-gray-100 hover:text-emerald-600 text-lg h-14 px-10 font-semibold">
                 Learn More
               </Button>
             </Link>
