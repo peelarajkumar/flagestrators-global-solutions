@@ -38,11 +38,11 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
               {/* <Code2 className="h-10 w-10 text-emerald-600 group-hover:rotate-12 transition-transform duration-500" /> */}
-              <img src="/assets/images/fgs-logo.png" alt="FGS Logo" className="h-16 w-16 text-emerald-600 group-hover:rotate-12 transition-transform duration-500" />
+              <img src="/assets/images/fgs-logo.png" alt="FGS Logo" className="h-16 w-16 text-emerald-600" />
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
             </div>
-            <span className="font-poppins text-2xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
-              Flagestrators Global
+            <span className="font-poppins text-2xl font-bold text-emerald-600 group-hover:text-emerald-700 transition-colors duration-300">
+              Flagestrators
             </span>
           </Link>
 

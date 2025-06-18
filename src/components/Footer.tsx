@@ -41,7 +41,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center space-x-2 mb-6">
               <Code2 className="h-8 w-8 text-primary" />
               <span className="font-playfair text-xl font-bold text-white">
-                Flagestrators Global
+                Flagestrators Global Solutions
               </span>
             </Link>
             <p className="text-gray-300 leading-relaxed mb-6">
@@ -151,7 +151,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © {currentYear} Flagestrators Global Software Solutions. All rights reserved.
+            © {currentYear} Flagestrators Global Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-primary text-sm transition-colors">

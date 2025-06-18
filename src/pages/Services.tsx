@@ -99,7 +99,7 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
         {/* Animated background images */}
@@ -137,76 +137,75 @@ const Services = () => {
 
       {/* Services Grid */}
       <section className="py-20 bg-white relative overflow-hidden">
-  {/* Animated decorative images */}
-  <div className="absolute top-10 left-10 w-24 h-24 rounded-xl overflow-hidden floating-animation opacity-15">
-    <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=200&h=200&fit=crop" alt="Development" className="w-full h-full object-cover" />
-  </div>
-  <div className="absolute top-1/3 right-10 w-20 h-20 rounded-full overflow-hidden floating-animation opacity-15" style={{ animationDelay: '3s' }}>
-    <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=200&h=200&fit=crop" alt="Architecture" className="w-full h-full object-cover" />
-  </div>
-  <div className="absolute bottom-20 left-1/4 w-28 h-28 rounded-2xl overflow-hidden floating-animation opacity-15" style={{ animationDelay: '5s' }}>
-    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&h=200&fit=crop" alt="AI" className="w-full h-full object-cover" />
-  </div>
+      {/* Animated decorative images */}
+      <div className="absolute top-10 left-10 w-24 h-24 rounded-xl overflow-hidden floating-animation opacity-15">
+        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=200&h=200&fit=crop" alt="Development" className="w-full h-full object-cover" />
+      </div>
+      <div className="absolute top-1/3 right-10 w-20 h-20 rounded-full overflow-hidden floating-animation opacity-15" style={{ animationDelay: '3s' }}>
+        <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=200&h=200&fit=crop" alt="Architecture" className="w-full h-full object-cover" />
+      </div>
+      <div className="absolute bottom-20 left-1/4 w-28 h-28 rounded-2xl overflow-hidden floating-animation opacity-15" style={{ animationDelay: '5s' }}>
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&h=200&fit=crop" alt="AI" className="w-full h-full object-cover" />
+      </div>
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      {services.map((service, index) => (
-        <Card key={index} className="p-5 glass-morphism border-0 shadow-lg card-hover group h-full animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-          <div className="aspect-video overflow-hidden rounded-xl mb-4">
-            <img 
-              src={service.image} 
-              alt={service.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <Card key={index} className="p-5 glass-morphism border-0 shadow-lg card-hover group h-full animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div className="aspect-video overflow-hidden rounded-xl mb-4">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
 
-          <div className="flex items-start space-x-3 mb-5">
-            <div className="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <service.icon className="h-6 w-6 text-emerald-600" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed text-sm">{service.description}</p>
-            </div>
-          </div>
+              <div className="flex items-start space-x-3 mb-5">
+                <div className="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <service.icon className="h-6 w-6 text-emerald-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">{service.description}</p>
+                </div>
+              </div>
 
-          <div className="mb-4">
-            <h4 className="text-sm font-semibold text-gray-900 mb-2">Key Features:</h4>
-            <ul className="space-y-1 text-sm">
-              {service.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center text-gray-600">
-                  <div className="w-2 h-2 bg-emerald-600 rounded-full mr-2" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
+              <div className="mb-4">
+                <h4 className="text-sm font-semibold text-gray-900 mb-2">Key Features:</h4>
+                <ul className="space-y-1 text-sm">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-gray-600">
+                      <div className="w-2 h-2 bg-emerald-600 rounded-full mr-2" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <div className="mb-4">
-            <h4 className="text-sm font-semibold text-gray-900 mb-2">Technologies:</h4>
-            <div className="flex flex-wrap gap-1">
-              {service.technologies.map((tech, idx) => (
-                <span key={idx} className="px-2 py-0.5 bg-emerald-100 text-emerald-600 rounded-full text-xs font-medium">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+              <div className="mb-4">
+                <h4 className="text-sm font-semibold text-gray-900 mb-2">Technologies:</h4>
+                <div className="flex flex-wrap gap-1">
+                  {service.technologies.map((tech, idx) => (
+                    <span key={idx} className="px-2 py-0.5 bg-emerald-100 text-emerald-600 rounded-full text-xs font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-          <Link to="/contact">
-            <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white transform hover:scale-105 transition-all duration-300 text-sm">
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </Card>
-      ))}
-    </div>
-  </div>
-</section>
-
+              <Link to="/contact">
+                <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white transform hover:scale-105 transition-all duration-300 text-sm">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </Card>
+          ))}
+        </div>
+      </div>
+      </section>
 
       {/* Process Section */}
       <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20 relative overflow-hidden">

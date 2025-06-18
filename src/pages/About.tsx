@@ -64,7 +64,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
         {/* Animated background images */}
@@ -91,7 +91,7 @@ const About = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl font-poppins font-bold mb-6 animate-slide-up">
-            About <span className="text-gradient-primary">Flagestrators Global</span>
+            About <span className="text-gradient-primary">Flagestrators Global Solutions</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
             We are a dynamic software solutions company dedicated to transforming businesses through 

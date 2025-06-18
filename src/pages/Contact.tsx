@@ -82,7 +82,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Office Location',
-      details: ['Flagestrators Global Software Solutions', 'Hyderabad, Telangana, India'],
+      details: ['Flagestrators Global Solutions', 'Hyderabad, Telangana, India'],
       color: 'from-emerald-600 to-green-600'
     },
     {
@@ -106,7 +106,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
         {/* Animated background elements */}
@@ -299,50 +299,6 @@ const Contact = () => {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-50/50 via-green-50/30 to-teal-50/20 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          {[...Array(5)].map((_, index) => (
-            <div
-              key={index}
-              className="absolute w-20 h-20 bg-emerald-200 rounded-full floating-animation opacity-20"
-              style={{
-                top: `${Math.random() * 80}%`,
-                left: `${Math.random() * 80}%`,
-                animationDelay: `${index * 2}s`
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12 animate-slide-up">
-            <h2 className="text-4xl font-poppins font-bold text-gray-900 mb-4">
-              Visit Our <span className="text-gradient-primary">Office</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Located in the heart of Hyderabad's technology hub, we're easily accessible and ready to meet in person.
-            </p>
-          </div>
-
-          <Card className="overflow-hidden glass-morphism border-0 shadow-lg animate-scale-in">
-            <div className="aspect-video bg-gradient-to-r from-emerald-600/20 to-green-600/20 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-16 w-16 text-emerald-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Interactive Map</h3>
-                <p className="text-gray-600">
-                  Hyderabad, Telangana, India
-                </p>
-                <p className="text-sm text-gray-500 mt-2">
-                  Interactive map integration will be configured with your specific address
-                </p>
-              </div>
-            </div>
-          </Card>
         </div>
       </section>
 

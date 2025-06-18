@@ -9,7 +9,7 @@ const Testimonials = () => {
       title: 'CTO',
       company: 'TechCorp Industries',
       rating: 5,
-      text: 'Flagestrators Global transformed our legacy systems into a modern, scalable platform. Their AI integration has improved our operational efficiency by 60%. Outstanding technical expertise and project management.',
+      text: 'Flagestrators Global Solutions transformed our legacy systems into a modern, scalable platform. Their AI integration has improved our operational efficiency by 60%. Outstanding technical expertise and project management.',
       image: '/assets/images/tech-corp-ceo.jpg?w=150&h=150&fit=crop&crop=face'
     },
     {
@@ -91,7 +91,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-emerald-50/50 via-blue-50/30 to-green-50/20 relative overflow-hidden">
         {/* Animated background elements */}
@@ -115,7 +115,7 @@ const Testimonials = () => {
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.3s' }}>
             Don't just take our word for it. Here's what industry leaders and satisfied clients 
-            have to say about their experience working with Flagestrators Global.
+            have to say about their experience working with Flagestrators Global Solutions.
           </p>
         </div>
       </section>
