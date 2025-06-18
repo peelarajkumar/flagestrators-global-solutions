@@ -49,10 +49,10 @@ const ChatBot = () => {
           messages: [
             {
               role: 'system',
-              content: `You are the AI assistant for Flagestrators Global, a leading software development company. Here's key information about the company:
+              content: `You are the AI assistant for Flagestrators Global Solutions, a leading software development company. Here's key information about the company:
 
 Company Overview:
-- Flagestrators Global is a premier software development company with 8+ years of experience
+- Flagestrators Global Solutions is a premier software development company with 8+ years of experience
 - We have delivered 150+ projects for 50+ clients worldwide
 - We specialize in enterprise-grade solutions, AI integration, and digital transformation
 
