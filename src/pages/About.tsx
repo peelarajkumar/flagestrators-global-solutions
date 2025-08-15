@@ -5,18 +5,18 @@ import { Mail, Linkedin, Github } from 'lucide-react';
 const About = () => {
   const team = [
     {
-      name: 'P Murali Krishna',
+      name: 'L Venkata Prasad',
       role: 'Founder & CEO',
       image: '/assets/images/ceo-img.jpeg',
       bio: 'Visionary leader driving innovation in enterprise software solutions with extensive experience in business strategy and technology leadership.',
       social: {
         linkedin: '#',
-        email: 'murali@flagestrators.com'
+        email: 'contact@flagestrators.com'
       }
     },
     {
       name: 'M Hari Krishna',
-      role: 'Senior Architect',
+      role: 'Vice President',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
       bio: 'Expert in designing scalable system architectures and leading complex software implementations across diverse technology stacks.',
       social: {
@@ -26,7 +26,7 @@ const About = () => {
     },
     {
       name: 'A Ravi Teja',
-      role: 'Technical Lead',
+      role: 'Managing Director',
       image: '/assets/images/tejdev.jpg',
       bio: 'Full-stack development expert specializing in modern web technologies, microservices, and cloud-native solutions.',
       social: {
@@ -36,22 +36,12 @@ const About = () => {
     },
     {
       name: 'P Rajkumar',
-      role: 'AI Engineer',
+      role: 'CTO',
       image: '/assets/images/rajdev.jpeg',
       bio: 'AI integration specialist with deep expertise in web development and intelligent automation solutions.',
       social: {
         linkedin: '#',
         email: 'rajkumar@flagestrators.com'
-      }
-    },
-    {
-      name: 'L Shiva',
-      role: 'Senior Business Analyst',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face',
-      bio: 'Business analysis expert bridging technology and business requirements to deliver solutions that drive measurable outcomes.',
-      social: {
-        linkedin: '#',
-        email: 'shiva@flagestrators.com'
       }
     }
   ];
@@ -223,7 +213,7 @@ const About = () => {
               {
                 title: 'Partnership',
                 description: 'We build lasting relationships based on trust, transparency, and mutual success.',
-                image: 'https://th.bing.com/th/id/R.8fd119a065478bfe3ed273da840fa968?rik=sqMznfpIFCZU%2fA&riu=http%3a%2f%2fnanoprotech.pk%2fwp-content%2fuploads%2f2016%2f08%2fPartnership.jpg&ehk=2yTWYzzeik4ObbWYvDE3HEuKwHw8pa2S007hQS%2bGHcY%3d&risl=&pid=ImgRaw&r=0?w=400&h=300&fit=crop'
+                image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop'
               }
             ].map((value, index) => (
               <Card key={index} className="overflow-hidden glass-morphism border-0 shadow-lg card-hover group animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
