@@ -5,40 +5,40 @@ import { Mail, Linkedin, Github } from 'lucide-react';
 const About = () => {
   const team = [
     {
-      name: 'L Venkata Prasad',
+      name: 'Kumar Raja',
       role: 'Founder & CEO',
       image: '/assets/images/ceo-img.jpeg',
-      bio: 'Visionary leader driving innovation in enterprise software solutions with extensive experience in business strategy and technology leadership.',
+      bio: 'Founder and chief executive with a passion for building transformative technology solutions. Leads the company with strategic vision, entrepreneurial spirit, and a commitment to excellence.',
       social: {
         linkedin: '#',
         email: 'contact@flagestrators.com'
       }
     },
     {
-      name: 'M Hari Krishna',
+      name: 'Raj Sekhar',
       role: 'Vice President',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
-      bio: 'Expert in designing scalable system architectures and leading complex software implementations across diverse technology stacks.',
+      bio: 'Executive leader driving strategic initiatives and organizational growth, with expertise in building high-performing teams and delivering enterprise-level solutions.',
       social: {
         linkedin: '#',
         email: 'hari@flagestrators.com'
       }
     },
     {
-      name: 'A Ravi Teja',
+      name: 'Ravi Teja',
       role: 'Managing Director',
       image: '/assets/images/tejdev.jpg',
-      bio: 'Full-stack development expert specializing in modern web technologies, microservices, and cloud-native solutions.',
+      bio: 'Strategic leader overseeing company operations and driving business growth through effective management, team leadership, and organizational excellence.',
       social: {
         linkedin: '#',
         email: 'ravi@flagestrators.com'
       }
     },
     {
-      name: 'P Rajkumar',
-      role: 'CTO',
+      name: 'Raj Kumar',
+      role: 'Director of Operations',
       image: '/assets/images/rajdev.jpeg',
-      bio: 'AI integration specialist with deep expertise in web development and intelligent automation solutions.',
+      bio: 'Operations expert focused on optimizing processes, ensuring seamless project delivery, and maintaining high standards of operational efficiency across all business functions.',
       social: {
         linkedin: '#',
         email: 'rajkumar@flagestrators.com'
